@@ -5,7 +5,7 @@ import logging
 from typing import Union
 
 def get_logger(fn: Union[str, None] = None,
-               level: int           = logging.DEBUG,
+               level: int           = logging.INFO,
                ) -> logging.Logger:
 
 

@@ -4,7 +4,7 @@
 
 from pathlib import Path
 from rich.pretty import pprint
-from typing import Dict, List, Union
+from typing import Dict, List, Union, Any
 import yaml
 
 import logging
@@ -36,3 +36,17 @@ def read_parameters(
         logging.debug(f'... {parms}')
 
     return parms
+
+
+# #================================================================
+# def make_paths(parms: Dict, 
+#                verbose: bool = VERBOSE, 
+#                DEBUG: bool = False) -> Dict:
+
+# #================================================================
+    
+#     raw_data_p = Path(parms['raw_data_p'])
+#     raw_data_f = Path(parms['raw_data_f'])
+#     raw_data_fp = raw_data_p / raw_data_f
+    
+#     proc_data_p = Path(parms['proc_data_p'])
