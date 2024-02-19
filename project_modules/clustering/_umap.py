@@ -24,7 +24,8 @@ def _reduce(
     um   = umap.UMAP(
                         metric       = 'euclidean', 
                         min_dist     = min_dist,  
-                        random_state = 42
+                        random_state = 42, 
+                        verbose      = verbose,
                     )
 
     # fit and transform the data
@@ -35,7 +36,8 @@ def _reduce(
 
 
 #========================================
-def _cluster(X: np.array): # type: ignore
+def _cluster(X: np.array,
+             verbose: bool = False): # type: ignore
 #========================================
     import hdbscan
 
@@ -48,6 +50,11 @@ def _cluster(X: np.array): # type: ignore
     hdb.fit(X)
     # assing clusters to the most probable class
     cluster_vec = hdbscan.all_points_membership_vectors(hdb)
+
+    # convert the cluster vector to a list
+    cluster_vec = [list(c) for c in cluster_vec] #type: ignore
+
+
     cluster_id = [np.argmax(c)+1 for c in cluster_vec] #type: ignore
 
     # NOTE: we don't actually do much with these - still relevant?
@@ -83,7 +90,8 @@ def _style_correct(pred, true, verbose=False) -> pd.Series:
 
 
 #========================================
-def prep_umap(X: Union[pd.DataFrame, List]) -> Tuple[np.array, np.array, np.array]: # type: ignore
+def prep_umap(X: Union[pd.DataFrame, List],
+              verbose: False) -> Tuple[np.array, np.array, np.array]: # type: ignore
 #========================================
 
     if isinstance(X, pd.DataFrame):
@@ -92,12 +100,12 @@ def prep_umap(X: Union[pd.DataFrame, List]) -> Tuple[np.array, np.array, np.arra
         X = pd.DataFrame(X)
 
     print(f">>> [umap] ... reducing")
-    r = _reduce(X)
+    r = _reduce(X, verbose = verbose)
 
     print(f">>> [umap] ... clustering")
-    c_vec, c_id = _cluster(r)
+    c_vec, c_id = _cluster(r, verbose = verbose)
 
-    return r, c_vec, c_id
+    return r, c_vec, c_id, r
 
 
 #========================================

@@ -14,13 +14,21 @@ def load_dataset_to_df(input_path: str,
 
     # load the dataset dict
     if verbose:
-        logging.info(f"Loading dataset dict from {input_path}...")
-    dsd = DatasetDict.load_from_disk(input_path)
+        logging.info(f"Loading data from {input_path}...")
+
+    try:
+        dsd = DatasetDict.load_from_disk(input_path)
+    except FileNotFoundError:
+        dsd = Dataset.load_from_disk(input_path)
 
     # convert to a combined dataframe
     if verbose:
         logging.info("Converting to dataframe...")
-    df = join_datasets(dsd)
+
+    try:
+        df = join_datasets(dsd)
+    except:
+        df = dsd.to_pandas()
 
     if verbose:
         logging.info(f"Shape: {df.shape}")
