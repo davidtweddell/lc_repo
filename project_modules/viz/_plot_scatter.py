@@ -48,7 +48,14 @@ def plot_scatter(
     ax.legend(loc='upper left', bbox_to_anchor=(1.05, 1))
     # set legend title
     leg = ax.get_legend()
-    leg.set_title(hue_variable.name)
+
+    # check to see if the hue_variable has a name
+    if hue_variable is not None:
+        if isinstance(hue_variable, pd.Series) and hue_variable.name is not None:
+            leg.set_title(hue_variable.name)
+        else:
+            # set the hue_variable name to the legend title
+            leg.set_title(hue_variable.__repr__())
     # set legend labels
     # if y is not None:
     #     leg_labels = y.unique()

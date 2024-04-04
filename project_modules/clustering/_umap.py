@@ -90,8 +90,11 @@ def _style_correct(pred, true, verbose=False) -> pd.Series:
 
 
 #========================================
-def prep_umap(X: Union[pd.DataFrame, List],
-              verbose: False) -> Tuple[np.array, np.array, np.array]: # type: ignore
+def prep_umap(
+                X: Union[pd.DataFrame, List],
+                y: Union[pd.Series, List, None] = None,
+                verbose: bool = False
+            ) -> Tuple[np.array, np.array, np.array]: # type: ignore
 #========================================
 
     if isinstance(X, pd.DataFrame):
@@ -105,7 +108,7 @@ def prep_umap(X: Union[pd.DataFrame, List],
     print(f">>> [umap] ... clustering")
     c_vec, c_id = _cluster(r, verbose = verbose)
 
-    return r, c_vec, c_id, r
+    return r, c_vec, c_id
 
 
 #========================================
