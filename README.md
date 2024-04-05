@@ -5,11 +5,12 @@
   - reducer.fit(X)
   - save the fitted reducer
   - rr = reducer.transform(X)
+  - `clusterer = hdb.HDBSCAN.fit(rr)`
   - use hdbscan to cluster: HDBSCAN.fit(rr)
   - save the fitted clusterer
   - visualize a dataframe consisting of the transformed coords and the labels
 
-- apply the fitted UMAP and HDBSCAN to transform the evaluation set and predictt labels
+- apply the fitted UMAP and HDBSCAN to transform the evaluation set and predict labels
   - test_labels, strengths = hdbscan.approximate_predict(clusterer, test_points)
   - visualize a dataframe consisting of the transformed test coords and the labels
 
