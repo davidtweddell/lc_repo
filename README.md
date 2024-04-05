@@ -1,3 +1,12 @@
+# LC OPTIMIZE
+
+## TODO
+
+- [ ] item
+- [ ] item
+
+## Algorithm sketches and ideas
+
 ### phenotype cluster
 
 - unsupervised clustering on train set
