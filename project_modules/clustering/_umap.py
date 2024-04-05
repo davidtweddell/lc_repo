@@ -9,9 +9,12 @@ from typing import Union, List, Dict, Tuple, Optional
 # globals
 figsize = (6,6)
 
+DEBUG = True
+
 #========================================
 def _reduce(
                 X: pd.DataFrame, 
+                y: Optional[pd.Series] = None,
                 min_dist: float   = 0.15, 
                 n_components: int = 2, 
                 verbose: bool     = False
@@ -29,7 +32,7 @@ def _reduce(
                     )
 
     # fit and transform the data
-    rr = um.fit_transform(np.array(X))
+    rr = um.fit_transform(np.array(X), y = y)
 
     # return the transformed coordinates
     return rr
@@ -37,7 +40,8 @@ def _reduce(
 
 #========================================
 def _cluster(X: np.array,
-             verbose: bool = False): # type: ignore
+             verbose: bool = False
+             ): # type: ignore
 #========================================
     import hdbscan
 
@@ -47,17 +51,19 @@ def _cluster(X: np.array,
                             cluster_selection_method = 'eom', 
                             prediction_data          = True
                         )
+    
+    # fit the clusterer
     hdb.fit(X)
+
     # assing clusters to the most probable class
     cluster_vec = hdbscan.all_points_membership_vectors(hdb)
+    cluster_id = [np.argmax(c) for c in cluster_vec] #type: ignore
+
+    if DEBUG:
+        print(cluster_vec[:5])
 
     # convert the cluster vector to a list
     cluster_vec = [list(c) for c in cluster_vec] #type: ignore
-
-
-    cluster_id = [np.argmax(c)+1 for c in cluster_vec] #type: ignore
-
-    # NOTE: we don't actually do much with these - still relevant?
 
     return cluster_vec, cluster_id
 
