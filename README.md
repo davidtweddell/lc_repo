@@ -1,5 +1,10 @@
 # LC OPTIMIZE
 
+## NOTES
+- look at `LC.xlsx` - it's a copy with mods of the doc that Doug sent
+- I added columns (headers in all caps) with some thoughts about which data rows to use, meanings, etc.
+- Please have a look and LMK what you think
+
 ## TODO
 
 - [ ] item
