@@ -4,6 +4,8 @@ import numpy as np
 # from numpy import NDArray, bool_
 from pathlib import Path
 
+from typing import Optional
+
 #==============================================================================
 def _get_zscores(df: pd.DataFrame):
     """
@@ -125,7 +127,7 @@ def _summarize_outliers(df: pd.DataFrame,
     ltx_total_outliers = f"\\newcommand{{\\totaloutliers}}{{{total_outliers}}}"
     ltx_outliers_fraction = f"\\newcommand{{\\outliersfraction}}{{{total_outliers/total_items*100:0.2f}}}"
 
-    with open(odir / "outliers-parms.tex", "w") as f:
+    with open(odir / "tex-parms-outliers.tex", "w") as f:
         # write a timestamp as a comment
         f.write(f"% Generated on {pd.Timestamp.now()}\n")
         f.write(ltx_zscore + "\n")
@@ -137,8 +139,8 @@ def _summarize_outliers(df: pd.DataFrame,
 
 #==============================================================================
 def treat_outliers(df: pd.DataFrame,
-                   odir: Path,
                    z_threshold: float = 3.0,
+                   odir: Optional[Path] = None,
                    method: str = "nan",
                    ) -> pd.DataFrame:
 #==============================================================================
@@ -163,8 +165,9 @@ def treat_outliers(df: pd.DataFrame,
     # get mask for outliers
     outlier_mask = _get_outlier_mask(df, z_threshold)
     
-    # summarize the outliers
-    _summarize_outliers(df, outlier_mask, z_threshold, odir)
+    if odir is not None:
+        # summarize the outliers in a latex table
+        _summarize_outliers(df, outlier_mask, z_threshold, odir)
 
     # replace outliers
     new_df = _replace_outliers(df, outlier_mask = outlier_mask, method = method)
