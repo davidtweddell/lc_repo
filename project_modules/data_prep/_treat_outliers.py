@@ -75,6 +75,7 @@ def _replace_outliers(df: pd.DataFrame,
 #==============================================================================
 
 
+
     print(f">>> Replacing outliers with {method}.")
 
     if method == "nan":
@@ -88,9 +89,13 @@ def _replace_outliers(df: pd.DataFrame,
         median = df.median()
         means = df.mean()
 
+        # print(median)
+
         for col in df.columns:
             # replace the outliers with the median
             df[col] = df[col].mask(outlier_mask[col], median[col])
+
+
 
     else:
         raise ValueError(f"Method {method} not supported.")
