@@ -75,6 +75,7 @@ def _replace_outliers(df: pd.DataFrame,
 #==============================================================================
 
 
+    new_df = pd.DataFrame(index = df.index, columns = df.columns)
 
     print(f">>> Replacing outliers with {method}.")
 
@@ -82,6 +83,8 @@ def _replace_outliers(df: pd.DataFrame,
         # replace with nan
         replacement_value = np.nan
         df = df.mask(outlier_mask, replacement_value)
+
+        new_df = df.mask(outlier_mask, replacement_value)
 
 
     elif method == "median":
@@ -93,7 +96,13 @@ def _replace_outliers(df: pd.DataFrame,
 
         for col in df.columns:
             # replace the outliers with the median
-            df[col] = df[col].mask(outlier_mask[col], median[col])
+            # df[col] = df[col].mask(outlier_mask[col], median[col])
+
+            for row in df.index:
+                if outlier_mask.loc[row, col]:
+                    # print(f"Replacing outlier in {col} at row {row} with median = {median[col]:0.2f} (mean = {means[col]:0.2f})")
+
+                    new_df.loc[row, col] = median[col]
 
 
 
