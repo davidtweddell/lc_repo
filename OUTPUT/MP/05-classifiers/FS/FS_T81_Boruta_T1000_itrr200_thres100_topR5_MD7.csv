@@ -1,0 +1,11 @@
+1,True,age
+1,True,dag
+2,False,SYMPT-cough___2
+1,True,SYMPT-dizziness___2
+3,False,SYMPT-extremity_weakness_or_numb___2
+1,True,SYMPT-fatigue___2
+3,False,SYMPT-headache___2
+1,True,SYMPT-joint_pain_arthralgia___2
+1,True,SYMPT-muscle_aches_myalgia___2
+5,False,SYMPT-shortness_of_breath_dyspne___1
+1,True,SYMPT-shortness_of_breath_dyspne___2
