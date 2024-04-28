@@ -1,4 +1,5 @@
 # Some of these packages are no longer being used, but I haven't cleared them out yet.
+from random import uniform
 import seaborn as sns
 import pandas as pd
 import numpy as np
@@ -19,6 +20,8 @@ from sklearn.ensemble import (
 )
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
+from xgboost import XGBClassifier,XGBRFClassifier
+
 
 from copy import deepcopy
 
@@ -28,6 +31,8 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 from boruta import BorutaPy
 import csv
+import cupy as cp
+cudaAvailable = 'cuda' if cp.cuda.is_available() else 'cpu'
 
 
 def getXY(df, target_col="LC_STATUS"):
@@ -42,7 +47,7 @@ def classify_MP(
     lCV=[3],
     lTitle=None,
     times=5,
-    lClassifiers=["RF", "ET", "DT", "RFR", "ETR", "LinearSVC", "LogR"],
+    lClassifiers=["RF", "ET", "DT", "RFR", "ETR", "LinearSVC", "LogR",'EXB'],
     lTrees=[1, 10],
     lMD=[None, 10],
     randomstate=42,
@@ -79,6 +84,16 @@ def classify_MP(
             "clf__n_estimators": lTrees,
             **treeParams,
         },
+        "XGBcpu": {
+            "clf": [
+                XGBClassifier(device='cpu', objective="binary:logistic")
+            ],  # TODO -  auto identify multiclass
+            # 'clf__objective': ['binary:logistic'],
+            "clf__n_estimators": lTrees,
+            "clf__learning_rate": [0.1, 0.2, 1],
+            # "clf__gamma": [0.],
+            **treeParams,
+        },
         "DT": {"clf": [DecisionTreeClassifier()], **treeParams},
         "LogR": {"clf": [LogisticRegression()], "clf__max_iter": [1000]},
     }
@@ -88,17 +103,31 @@ def classify_MP(
             "clf": [LinearSVC()],
         }
     }
+    dictXGBcudaClfs = {
+        "XGBcuda": {
+            "clf": [
+                XGBClassifier(device='cuda', objective="binary:logistic")
+            ],  # TODO -  auto identify multiclass
+            # 'clf__objective': ['binary:logistic'],
+            "clf__n_estimators": lTrees,
+            "clf__learning_rate": [0.1, 0.2, 1],
+            # "clf__gamma": [0.],
+            **treeParams,
+        },
+    }
 
     lOut = []
     # for m, X in enumerate(lMat):
     #     y = lLabel[m]
     results = []
 
-    if len(set(y)) > 2 and "roc_auc" in lScorers:
-        lScoresSel = deepcopy(lScorers)
-        lScoresSel.remove("roc_auc")
-    else:
-        lScoresSel = lScorers
+    # #TODO - ENABLE more than one class... had to disable this bc of cupy array type input
+    # if len(set(y)) > 2 and "roc_auc" in lScorers:
+    #     lScoresSel = deepcopy(lScorers)
+    #     lScoresSel.remove("roc_auc")
+    # else:
+    #     lScoresSel = lScorers
+    lScoresSel = lScorers
 
     dictScorer = {}
     for i,score in enumerate(lScoresSel):
@@ -122,6 +151,7 @@ def classify_MP(
         paramsScale = list(
             filter(None, [*map(dictScaleClfs.get, lClassifiers)])
         )
+        paramsXGB = list(filter(None, [*map(dictXGBcudaClfs.get, lClassifiers)]))
 
         RTmp = []
         if len(params) != 0:
@@ -138,6 +168,7 @@ def classify_MP(
             RTmp.append(clf.cv_results_)
 
         if len(paramsScale) != 0:
+            print('Scaling X for ParamsScaled')
             scaler = StandardScaler()
             X_scaled = scaler.fit_transform(X)
             clf = GridSearchCV(
@@ -149,7 +180,21 @@ def classify_MP(
                 cv=StratifiedKFold(c),
             )
 
-            clf.fit(X_scaled, y)
+            clf.fit(X_scaled, y)  # NOTE - Main difference in paramsScale
+            RTmp.append(clf.cv_results_)
+
+        if len(paramsXGB) !=0:
+            print("XGB CUDA")
+            clf = GridSearchCV(
+                pipe,
+                param_grid=paramsXGB,
+                scoring=dictScorer,
+                refit="accuracy",
+                n_jobs=n_jobs,
+                cv=StratifiedKFold(c),
+            )
+
+            clf.fit(cp.array(X), y) #NOTE - Main difference in XGB -- to enable cuda
             RTmp.append(clf.cv_results_)
 
         for R in RTmp:
@@ -237,13 +282,13 @@ def boruta_fs(
     top_rank_feat = []
     for i in range(len(feat_selector.support_)):
         if feat_selector.ranking_[i] <= top_rank:
-            print(
-                f"{feat_selector.ranking_[i]}\t{feat_selector.support_[i]}\t{feat_list[i]}"
-            )
+            # print(
+            #     f"{feat_selector.ranking_[i]}\t{feat_selector.support_[i]}\t{feat_list[i]}"
+            # )
             top_rank_feat.append(feat_list[i])
             if feat_selector.support_[i] == True:
                 true_feat.append(feat_list[i])
-    print(true_feat)
+    # print(true_feat)
 
     if fileName != None:
         with open(fileName, "w") as file:
@@ -252,9 +297,9 @@ def boruta_fs(
             )
             for i in range(len(feat_selector.support_)):
                 if feat_selector.ranking_[i] <= top_rank:
-                    print(
-                        f"{feat_selector.ranking_[i]}\t{feat_selector.support_[i]}\t{feat_list[i]}"
-                    )
+                    # print(
+                    #     f"{feat_selector.ranking_[i]}\t{feat_selector.support_[i]}\t{feat_list[i]}"
+                    # )
                     csvwrite.writerow(
                         [
                             feat_selector.ranking_[i],
