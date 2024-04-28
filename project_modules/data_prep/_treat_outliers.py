@@ -92,7 +92,10 @@ def _replace_outliers(df: pd.DataFrame,
         median = df.median()
         means = df.mean()
 
-        # print(median)
+        print(median)
+
+        # first, fill the new_df with the original values
+        new_df = df.copy()
 
         for col in df.columns:
             # replace the outliers with the median
@@ -109,7 +112,7 @@ def _replace_outliers(df: pd.DataFrame,
     else:
         raise ValueError(f"Method {method} not supported.")
 
-    return df
+    return new_df
 
 
 #==============================================================================
@@ -186,4 +189,6 @@ def treat_outliers(df: pd.DataFrame,
     # replace outliers
     new_df = _replace_outliers(df, outlier_mask = outlier_mask, method = method)
     
+    # print(new_df.head)
+
     return new_df
