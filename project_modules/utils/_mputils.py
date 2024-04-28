@@ -21,3 +21,12 @@ class MPutils:
             lCols.remove(col)
         lCols = firstCols+ lCols
         return df[lCols]
+    
+    def getTrueFeatList(fileName):
+        dfTmp = pd.read_csv(
+        fileName,
+        header=None,
+    )
+        dfTmp.columns = ["Rank", "TrueFeat", "Feat"]
+        dfTmp = dfTmp[dfTmp["TrueFeat"] == True]
+        return dfTmp["Feat"].to_list()
