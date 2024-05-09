@@ -1,59 +1,60 @@
 feature,category,clean,clean_flip
-CD-adjunctive___1,Cd,(Cov_Ind) Vasopressor/Inotrope,Vasopressor/Inotrope (Cov_Ind)
-CD-difficulty_with_concentrat___4,Cd,(LCov_Comp) Concentration Unknown Origin,Concentration Unknown Origin (LCov_Comp)
-CD-hospitalized,Cd,(Cov) Hospitalized,Hospitalized (Cov)
-CD-medication_received___1,Cd,(Cov_Med) Steroids,Steroids (Cov_Med)
-CD-medication_received___3,Cd,(Cov_Med) Anticoagulant,Anticoagulant (Cov_Med)
-CD-medication_received___4,Cd,(Cov_Med) Colchicine,Colchicine (Cov_Med)
-CD-medication_received___5,Cd,(Cov_Med) Antibiotics,Antibiotics (Cov_Med)
-CD-memory_problems___4,Cd,(LCov_Comp) Memory Unknown Origin,Memory Unknown Origin (LCov_Comp)
-CD-required_oxygen,Cd,(Cov_Ind) Oxygen,Oxygen (Cov_Ind)
-CD-respiratory-other-4,Cd,(LCov_Comp) Respiratory Unknown Origin,Respiratory Unknown Origin (LCov_Comp)
-CD-severity_level___0,Cd,(Cov_Sevr) UnInfected,UnInfected (Cov_Sevr)
-CD-severity_level___1,Cd,(Cov_Sevr) Mild,Mild (Cov_Sevr)
-CD-severity_level___2,Cd,(Cov_Sevr) Moderate,Moderate (Cov_Sevr)
-CD-severity_level___3,Cd,(Cov_Sevr) Severe,Severe (Cov_Sevr)
-CD-spo2,Cd,(Cov_Ind) SpO2,SpO2 (Cov_Ind)
-CD-type_of_care___1,Cd,(Cov) ICU,ICU (Cov)
-CD-type_of_care___2,Cd,(Cov) Non-ICU,Non-ICU (Cov)
-HHX-Arterial Hypertension,Hhx,(Hx) Arterial Hypertension,Arterial Hypertension (Hx)
-HHX-Asthma,Hhx,(Hx) Asthma,Asthma (Hx)
-HHX-Diabetes,Hhx,(Hx) Diabetes,Diabetes (Hx)
-HHX-OTHER-Sleep-disorder,Hhx,(Hx) Sleep Disorder,Sleep Disorder (Hx)
-HHX-Obesity,Hhx,(Hx) Obesity,Obesity (Hx)
-HHX-Other,Hhx,(Hx) Other,Other (Hx)
-HHX-Psychiatric disease,Hhx,(Hx) Psychiatric Disease,Psychiatric Disease (Hx)
-MED-Antivirals,Med,(Hx_Med) Anti-Virals,Anti-Virals (Hx_Med)
-MED-Cardiovascular-agents,Med,(Hx_Med) Cardiovascular,Cardiovascular (Hx_Med)
-MED-Respiratory-tract-agents,Med,(Hx_Med) Respiratory Tract,Respiratory Tract (Hx_Med)
+CD-adjunctive___1,Cd,CoV Vasopressor/Inotrope,Vasopressor/Inotrope CoV
+CD-difficulty_with_concentrat___4,Cd,LC+ Concentration Unknown Origin,Concentration Unknown Origin LC+
+CD-hospitalized,Cd,CoV Hospitalized,Hospitalized CoV
+CD-medication_received___1,Cd,CoV Steroids,Steroids CoV
+CD-medication_received___3,Cd,CoV Anticoagulant,Anticoagulant CoV
+CD-medication_received___4,Cd,CoV Colchicine,Colchicine CoV
+CD-medication_received___5,Cd,CoV Antibiotics,Antibiotics CoV
+CD-memory_problems___4,Cd,LC+ Memory Unknown Origin,Memory Unknown Origin LC+
+CD-required_oxygen,Cd,CoV Oxygen,Oxygen CoV
+CD-respiratory-other-4,Cd,LC+ Respiratory Unknown Origin,Respiratory Unknown Origin LC+
+CD-severity_level___0,Cd,CoV UnInfected,UnInfected CoV
+CD-severity_level___1,Cd,CoV Mild,Mild CoV
+CD-severity_level___2,Cd,CoV Moderate,Moderate CoV
+CD-severity_level___3,Cd,CoV Severe,Severe CoV
+CD-spo2,Cd,CoV SpO2,SpO2 CoV
+CD-type_of_care___1,Cd,CoV ICU,ICU CoV
+CD-type_of_care___2,Cd,CoV Non-ICU,Non-ICU CoV
+HHX-Arterial Hypertension,Hhx,PMHx Hypertension,Arterial Hypertension PMHx
+HHX-Asthma,Hhx,PMHx Asthma,Asthma PMHx
+HHX-Diabetes,Hhx,PMHx Diabetes,Diabetes PMHx
+HHX-OTHER-Sleep-disorder,Hhx,PMHx Sleep Disorder,Sleep Disorder PMHx
+HHX-Obesity,Hhx,PMHx Obesity,Obesity PMHx
+HHX-Other,Hhx,PMHx Other,Other PMHx
+HHX-Psychiatric disease,Hhx,PMHx Psychiatric Disease,Psychiatric Disease PMHx
+MED-Antivirals,Med,PMHx Anti-Virals,Anti-Virals PMHx
+MED-Cardiovascular-agents,Med,PMHx Cardiovascular,Cardiovascular PMHx
+MED-Respiratory-tract-agents,Med,PMHx Respiratory Tract,Respiratory Tract PMHx
 SUBST-3,Subst,Alcohol Intake,Alcohol Intake
-SYMPT-chest_pain___1,Sympt,(Cov_Sym) Chest Pain,Chest Pain (Cov_Sym)
-SYMPT-confusion_altered_mental_s___2,Sympt,(LCov_Sym) Altered Mental Status,Altered Mental Status (LCov_Sym)
-SYMPT-cough___1,Sympt,(Cov_Sym) Cough,Cough (Cov_Sym)
-SYMPT-diarrhea___1,Sympt,(Cov_Sym) Diarrhea,Diarrhea (Cov_Sym)
-SYMPT-dizziness___1,Sympt,(Cov_Sym) Dizziness,Dizziness (Cov_Sym)
-SYMPT-dizziness___2,Sympt,(LCov_Sym) Dizziness,Dizziness (LCov_Sym)
-SYMPT-extremity_weakness_or_numb___1,Sympt,(Cov_Sym) Extremity Weakness Or Numb,Extremity Weakness Or Numb (Cov_Sym)
-SYMPT-extremity_weakness_or_numb___2,Sympt,(LCov_Sym) Extremity Weakness Or Numb,Extremity Weakness Or Numb (LCov_Sym)
-SYMPT-fatigue___1,Sympt,(Cov_Sym) Fatigue,Fatigue (Cov_Sym)
-SYMPT-fatigue___2,Sympt,(LCov_Sym) Fatigue,Fatigue (LCov_Sym)
-SYMPT-fever_38_0oc___1,Sympt,(Sym_Cov) Fever > 38,Fever > 38 (Sym_Cov)
-SYMPT-headache___1,Sympt,(Cov_Sym) Headache,Headache (Cov_Sym)
-SYMPT-joint_pain_arthralgia___1,Sympt,(Cov_Sym) Arthralgia,Arthralgia (Cov_Sym)
-SYMPT-joint_pain_arthralgia___2,Sympt,(LCov_Sym) Arthralgia,Arthralgia (LCov_Sym)
-SYMPT-loss_of_taste_lost_of_smel___1,Sympt,(Cov_Sym) Loss Of Taste/Smell,Loss Of Taste/Smell (Cov_Sym)
-SYMPT-loss_of_taste_lost_of_smel___2,Sympt,(LCov_Sym) Loss Of Taste/Smell,Loss Of Taste/Smell (LCov_Sym)
-SYMPT-muscle_aches_myalgia___1,Sympt,(Cov_Sym) Myalgia,Myalgia (Cov_Sym)
-SYMPT-muscle_aches_myalgia___2,Sympt,(LCov_Sym) Myalgia,Myalgia (LCov_Sym)
-SYMPT-nausea_vomiting___1,Sympt,(Cov_Sym) Nausea Vomiting,Nausea Vomiting (Cov_Sym)
-SYMPT-night_sweats___2,Sympt,(LCov_Sym) Night Sweats,Night Sweats (LCov_Sym)
-SYMPT-runny_nose_rhinorrhea___1,Sympt,(Cov_Sym) Rhinorrhea,Rhinorrhea (Cov_Sym)
-SYMPT-shortness_of_breath_dyspne___1,Sympt,(Cov_Sym) Dyspnea,Dyspnea (Cov_Sym)
-SYMPT-shortness_of_breath_dyspne___2,Sympt,(LCov_Sym) Dyspnea,Dyspnea (LCov_Sym)
-SYMPT-sore_throat___1,Sympt,(Cov_Sym) Sore Throat,Sore Throat (Cov_Sym)
-SYMPT-weight_loss___1,Sympt,(Cov_Sym) Weight Loss,Weight Loss (Cov_Sym)
-SYMPT-weight_loss___2,Sympt,(LCov_Sym) Weight Loss,Weight Loss (LCov_Sym)
+SYMPT-chest_pain___1,Sympt,CoV Chest Pain,Chest Pain CoV
+SYMPT-confusion_altered_mental_s___2,Sympt,LC+ Altered Mental Status,Altered Mental Status LC+
+SYMPT-cough___1,Sympt,CoV Cough,Cough CoV
+SYMPT-diarrhea___1,Sympt,CoV Diarrhea,Diarrhea CoV
+SYMPT-dizziness___1,Sympt,CoV Dizziness,Dizziness CoV
+SYMPT-dizziness___2,Sympt,LC+ Dizziness,Dizziness LC+
+SYMPT-extremity_weakness_or_numb___1,Sympt,CoV Extremity Weakness Or Numb,Extremity Weakness Or Numb CoV
+SYMPT-extremity_weakness_or_numb___2,Sympt,LC+ Extremity Weakness Or Numb,Extremity Weakness Or Numb LC+
+SYMPT-fatigue___1,Sympt,CoV Fatigue,Fatigue CoV
+SYMPT-fatigue___2,Sympt,LC+ Fatigue,Fatigue LC+
+SYMPT-fever_38_0oc___1,Sympt,CoV Fever > 38,Fever > 38 CoV
+SYMPT-headache___1,Sympt,CoV Headache,Headache CoV
+SYMPT-joint_pain_arthralgia___1,Sympt,CoV Arthralgia,Arthralgia CoV
+SYMPT-joint_pain_arthralgia___2,Sympt,LC+ Arthralgia,Arthralgia LC+
+SYMPT-loss_of_taste_lost_of_smel___1,Sympt,CoV Aguesia/Anosmia,Aguesia/Anosmia CoV
+SYMPT-loss_of_taste_lost_of_smel___2,Sympt,LC+ Aguesia/Anosmia,Aguesia/Anosmia LC+
+SYMPT-muscle_aches_myalgia___1,Sympt,CoV Myalgia,Myalgia CoV
+SYMPT-muscle_aches_myalgia___2,Sympt,LC+ Myalgia,Myalgia LC+
+SYMPT-nausea_vomiting___1,Sympt,CoV Nausea Vomiting,Nausea Vomiting CoV
+SYMPT-night_sweats___2,Sympt,LC+ Night Sweats,Night Sweats LC+
+SYMPT-runny_nose_rhinorrhea___1,Sympt,CoV Rhinorrhea,Rhinorrhea CoV
+SYMPT-shortness_of_breath_dyspne___1,Sympt,CoV Dyspnea,Dyspnea CoV
+SYMPT-shortness_of_breath_dyspne___2,Sympt,LC+ Dyspnea,Dyspnea LC+
+SYMPT-sore_throat___1,Sympt,CoV Sore Throat,Sore Throat CoV
+SYMPT-weight_loss___1,Sympt,CoV Weight Loss,Weight Loss CoV
+SYMPT-weight_loss___2,Sympt,LC+ Weight Loss,Weight Loss LC+
 VAX-vaccinated,Vax,Vaccinated,Vaccinated
 age,Demo,Age,Age
 sex,Demo,Sex,Sex
-SYMPT-headache___2,Sympt,(LCov_Sym) Headache,Headache (LCov_Sym)
+SYMPT-headache___2,Sympt,LC+ Headache,Headache LC+
+SYMPT-chest_pain___2,Sympt,LC+ Chest Pain,Chest Pain LC+
