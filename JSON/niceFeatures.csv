@@ -33,16 +33,16 @@ SYMPT-cough___1,Sympt,CoV Cough,Cough CoV
 SYMPT-diarrhea___1,Sympt,CoV Diarrhea,Diarrhea CoV
 SYMPT-dizziness___1,Sympt,CoV Dizziness,Dizziness CoV
 SYMPT-dizziness___2,Sympt,LC+ Dizziness,Dizziness LC+
-SYMPT-extremity_weakness_or_numb___1,Sympt,CoV Extremity Weakness Or Numb,Extremity Weakness Or Numb CoV
-SYMPT-extremity_weakness_or_numb___2,Sympt,LC+ Extremity Weakness Or Numb,Extremity Weakness Or Numb LC+
+SYMPT-extremity_weakness_or_numb___1,Sympt,CoV Extremity Weakness/Numbness,Extremity Weakness/Numbness CoV
+SYMPT-extremity_weakness_or_numb___2,Sympt,LC+ Extremity Weakness/Numbness,Extremity Weakness/Numbness LC+
 SYMPT-fatigue___1,Sympt,CoV Fatigue,Fatigue CoV
 SYMPT-fatigue___2,Sympt,LC+ Fatigue,Fatigue LC+
 SYMPT-fever_38_0oc___1,Sympt,CoV Fever > 38,Fever > 38 CoV
 SYMPT-headache___1,Sympt,CoV Headache,Headache CoV
 SYMPT-joint_pain_arthralgia___1,Sympt,CoV Arthralgia,Arthralgia CoV
 SYMPT-joint_pain_arthralgia___2,Sympt,LC+ Arthralgia,Arthralgia LC+
-SYMPT-loss_of_taste_lost_of_smel___1,Sympt,CoV Aguesia/Anosmia,Aguesia/Anosmia CoV
-SYMPT-loss_of_taste_lost_of_smel___2,Sympt,LC+ Aguesia/Anosmia,Aguesia/Anosmia LC+
+SYMPT-loss_of_taste_lost_of_smel___1,Sympt,CoV Ageusia/Anosmia,Ageusia/Anosmia CoV
+SYMPT-loss_of_taste_lost_of_smel___2,Sympt,LC+ Ageusia/Anosmia,Ageusia/Anosmia LC+
 SYMPT-muscle_aches_myalgia___1,Sympt,CoV Myalgia,Myalgia CoV
 SYMPT-muscle_aches_myalgia___2,Sympt,LC+ Myalgia,Myalgia LC+
 SYMPT-nausea_vomiting___1,Sympt,CoV Nausea Vomiting,Nausea Vomiting CoV
