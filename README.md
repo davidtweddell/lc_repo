@@ -29,16 +29,6 @@ hdb.fit(rr)
 clusters = hdb.labels_
 # could save the fitted clusterer to a file if we want
 ```
- - assemble a dataframe, etc., to visualize the transformed coords and the labels
-
-- apply the fitted UMAP and HDBSCAN to transform the evaluation set and predict labels
-```
-test_labels, strengths = hdbscan.approximate_predict(clusterer, reducer.transform(X_test))
-```
-  - visualize a dataframe consisting of the transformed test coords and the labels
-
-- given the predicted cluster as a target, use rfc etc., to train a model to predict cluster (features = UMAP reduced dims, or raw feature values)
-
-- transform the holdout set and predict clusters
-- visualize to assess performance
+- assemble a dataframe, etc., to visualize the transformed coords and the labels
+- given the cluster as a target, use rfc etc., to train a model to predict cluster (features = UMAP reduced dims, or raw feature values) and extract the important features
 
