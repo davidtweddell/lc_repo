@@ -3,9 +3,11 @@ CD-adjunctive___1,Cd,CoV Vasopressor/Inotrope,Vasopressor/Inotrope CoV
 CD-difficulty_with_concentrat___4,Cd,LC+ Concentration Unknown Origin,Concentration Unknown Origin LC+
 CD-hospitalized,Cd,CoV Hospitalized,Hospitalized CoV
 CD-medication_received___1,Cd,CoV Steroids,Steroids CoV
+CD-medication_received___2,Cd,CoV Remdesivir,Remdesivir CoV
 CD-medication_received___3,Cd,CoV Anticoagulant,Anticoagulant CoV
 CD-medication_received___4,Cd,CoV Colchicine,Colchicine CoV
 CD-medication_received___5,Cd,CoV Antibiotics,Antibiotics CoV
+CD-medication_received___6,Cd,CoV Other Meds,Other Meds CoV
 CD-memory_problems___4,Cd,LC+ Memory Unknown Origin,Memory Unknown Origin LC+
 CD-required_oxygen,Cd,CoV Oxygen,Oxygen CoV
 CD-respiratory-other-4,Cd,LC+ Respiratory Unknown Origin,Respiratory Unknown Origin LC+
@@ -38,6 +40,7 @@ SYMPT-extremity_weakness_or_numb___2,Sympt,LC+ Extremity Weakness/Numbness,Extre
 SYMPT-fatigue___1,Sympt,CoV Fatigue,Fatigue CoV
 SYMPT-fatigue___2,Sympt,LC+ Fatigue,Fatigue LC+
 SYMPT-fever_38_0oc___1,Sympt,CoV Fever > 38,Fever > 38 CoV
+SYMPT-fever_38_0oc___2,Sympt,LC+ Fever > 38,Fever > 38 LC+
 SYMPT-headache___1,Sympt,CoV Headache,Headache CoV
 SYMPT-joint_pain_arthralgia___1,Sympt,CoV Arthralgia,Arthralgia CoV
 SYMPT-joint_pain_arthralgia___2,Sympt,LC+ Arthralgia,Arthralgia LC+
@@ -58,3 +61,9 @@ age,Demo,Age,Age
 sex,Demo,Sex,Sex
 SYMPT-headache___2,Sympt,LC+ Headache,Headache LC+
 SYMPT-chest_pain___2,Sympt,LC+ Chest Pain,Chest Pain LC+
+SYMPT-sore_throat___2,Sympt,LC+ Sore Throat,Sore Throat LC+
+SYMPT-ear_pain___2,Sympt,LC+ Ear Pain,Ear Pain LC+
+SYMPT-nausea_vomiting___2,Sympt,LC+ Nausea/Vomiting,Nausea/Vomiting LC+
+SYMPT-cough___2,Sympt,LC+ Cough,Cough LC+
+HHX-Cardiovascular disease,Hhx,PMHx Cardiovascular Disease,Cardiovasclar Disease PMHx
+HHX-OTHER-hypo,Hhx,PMHx Hypo,Hypo PMHx
