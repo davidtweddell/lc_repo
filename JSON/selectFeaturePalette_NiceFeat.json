@@ -18,5 +18,12 @@
 "CoV Brain Fog":[0.937255, 0.870588, 0.996078],
 "CoV Insomnia": [0.47451, 0.352941, 0.0],
 "CoV Mood Change":  [0.372549, 0.533333, 0.603922],
-"CoV Hyperglycemia": [0.705882, 1.0, 0.572549]
+"CoV Hyperglycemia": [0.705882, 1.0, 0.572549],
+"LC+ Wheezing/Stridor": [0.705882, 1.0, 0.572549],
+"LC+ Diarrhea":[0.368627, 0.447059, 0.419608],
+"LC+ Loss of Appetite":[0.321569, 0.0, 0.4],
+"LC+ Abdominal Pain" : [0.678431, 0.545098, 0.694118]
 }
+
+ 
+ 
