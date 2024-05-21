@@ -18,6 +18,26 @@ CD-severity_level___3,Cd,CoV Severe,Severe CoV
 CD-spo2,Cd,CoV SpO2,SpO2 CoV
 CD-type_of_care___1,Cd,CoV ICU,ICU CoV
 CD-type_of_care___2,Cd,CoV Non-ICU,Non-ICU CoV
+CD-anxiety___1,Cd,CoV Anxiety,Anxiety CoV
+CD-anxiety___2,Cd,LC+ Anxiety,Anxiety LC+
+CD-insomnia___1,Cd,CoV Insomnia,Insomnia CoV
+CD-insomnia___2,Cd,LC+ Insomnia,Insomnia LC+
+CD-depression___1,Cd,CoV Depression,Depression CoV
+CD-depression___2,Cd,LC+ Depression,Depression LC+
+CD-irritability___1,Cd,CoV Irritability,Irritability CoV
+CD-irritability___2,Cd,LC+ Irritability,Irritability LC+
+CD-fatigue___1,Cd,CoV Fatigue,Fatigue CoV
+CD-fatigue___2,Cd,LC+ Fatigue,Fatigue LC+
+CD-memory_problems___1,Cd,CoV Memory Problems,Memory Problems CoV
+CD-memory_problems___2,Cd,LC+ Memory Problems,Memory Problems LC+
+CD-brain_fog___1,Cd,CoV Brain Fog,Brain Fog CoV
+CD-brain_fog___2,Cd,LC+ Brain Fog,Brain Fog LC+
+CD-difficulty_with_concentrat___1,Cd,CoV Concentration,Concentration CoV
+CD-difficulty_with_concentrat___2,Cd,LC+ Concentration,Concentration LC+
+CD-mood_change___1,Cd,CoV Mood Change,Mood Change CoV
+CD-mood_change___2,Cd,LC+ Mood Change,Mood Change LC+
+CD-hyperglycemia___1,Cd,CoV Hyperglycemia,Hyperglycemia CoV
+CD-hyperglycemia___2,Cd,LC+ Hyperglycemia,Hyperglycemia LC+
 HHX-Arterial Hypertension,Hhx,PMHx Hypertension,Arterial Hypertension PMHx
 HHX-Asthma,Hhx,PMHx Asthma,Asthma PMHx
 HHX-Diabetes,Hhx,PMHx Diabetes,Diabetes PMHx
