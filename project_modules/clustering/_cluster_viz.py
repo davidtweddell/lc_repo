@@ -242,15 +242,20 @@ def plot_multiple_features(
             # add centroids for reference
             _plot_centroids(centroids, 
                             the_ax, 
-                            alpha     = 0.35, 
+                            alpha     = 0.25, 
                             show_edge = True)
 
         # turn off the ticks on the ax
         the_ax.set_xticks([]); the_ax.set_yticks([])
         the_ax.set_xlabel(""); the_ax.set_ylabel("")
 
-        # set axis title
-        the_ax.set_title(feature_map[f], fontsize = FONTSIZE - 2)
+        # if the feature_map[f] contains a slash, split it and use the first part
+
+        if "/" in feature_map[f]:
+            the_ax.set_title(feature_map[f].split("/")[0], fontsize = fontsize)
+        else:
+            # set axis title
+            the_ax.set_title(feature_map[f], fontsize = fontsize)
 
         # turn off the legnd on the ax
         the_ax.legend().remove()
