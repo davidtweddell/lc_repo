@@ -6,3 +6,6 @@
 .DS_Store
 *.joblib
 *.yaml
+*.pkl
+*.png
+*.jpg
