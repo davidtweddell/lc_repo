@@ -22,7 +22,12 @@
 "LC+ Wheezing/Stridor": [0.705882, 1.0, 0.572549],
 "LC+ Diarrhea":[0.368627, 0.447059, 0.419608],
 "LC+ Loss of Appetite":[0.321569, 0.0, 0.4],
-"LC+ Abdominal Pain" : [0.678431, 0.545098, 0.694118]
+"LC+ Abdominal Pain" : [0.678431, 0.545098, 0.694118],
+"PMHx HIV-AIDS": [0.643137, 0.152941, 0.129412],
+"LC+ Rhinorrhea": [0.113725, 0.894118, 1.0],
+"CoV Neurologic Complications":  [0.490196, 0.686275, 0.231373],
+"PMHx MSK": [0.482353, 0.294118, 0.568627],
+"PMHx Non-TIA Neuro": [0.878431, 1.0, 0.282353]
 }
 
  
