@@ -22,7 +22,7 @@ def plot_feature_importances(
                             feature_map: dict,
                             feature_colour_map: dict,
                             ax,
-                            FONTSIZE: int = 24,
+                            FONTSIZE: Union[int, float] = 24,
                             ):
 #===============================================================================
     
@@ -58,7 +58,7 @@ def plot_clusters(
                     most_likely: Optional[bool]  = False,
                     size_by_prob: Optional[bool] = False,
                     ax: Optional[Axes]           = None,
-                    FONTSIZE: int                = 24,
+                    FONTSIZE: Union[int, float]                = 24,
                     style:str                    = "Site",
                     centroid_kws: dict           = {},
                       ):
