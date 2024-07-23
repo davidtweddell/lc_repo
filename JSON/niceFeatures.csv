@@ -41,10 +41,13 @@ CD-hyperglycemia___2,Cd,LC+ Hyperglycemia,Hyperglycemia LC+
 HHX-Arterial Hypertension,Hhx,PMHx Hypertension,Arterial Hypertension PMHx
 HHX-Asthma,Hhx,PMHx Asthma,Asthma PMHx
 HHX-Diabetes,Hhx,PMHx Diabetes,Diabetes PMHx
+HHX-HIV or AIDS,Hhx,PMHx HIV-AIDS,HIV-AIDS PMHx
 HHX-OTHER-Sleep-disorder,Hhx,PMHx Sleep Disorder,Sleep Disorder PMHx
+HHX-OTHER-MSK,Hhx,PMHx MSK,MSK PMHx
 HHX-Obesity,Hhx,PMHx Obesity,Obesity PMHx
 HHX-Other,Hhx,PMHx Other,Other PMHx
 HHX-Psychiatric disease,Hhx,PMHx Psychiatric Disease,Psychiatric Disease PMHx
+HHX-Chronic neurological disorder (other than stroke/TIA),Hhx,PMHx Non-TIA Neuro,Non-TIA Neuro PMHx
 MED-Antivirals,Med,PMHx Anti-Virals,Anti-Virals PMHx
 MED-Cardiovascular-agents,Med,PMHx Cardiovascular,Cardiovascular PMHx
 MED-Respiratory-tract-agents,Med,PMHx Respiratory Tract,Respiratory Tract PMHx
@@ -71,6 +74,7 @@ SYMPT-muscle_aches_myalgia___2,Sympt,LC+ Myalgia,Myalgia LC+
 SYMPT-nausea_vomiting___1,Sympt,CoV Nausea Vomiting,Nausea Vomiting CoV
 SYMPT-night_sweats___2,Sympt,LC+ Night Sweats,Night Sweats LC+
 SYMPT-runny_nose_rhinorrhea___1,Sympt,CoV Rhinorrhea,Rhinorrhea CoV
+SYMPT-runny_nose_rhinorrhea___2,Sympt,LC+ Rhinorrhea,Rhinorrhea LC+
 SYMPT-shortness_of_breath_dyspne___1,Sympt,CoV Dyspnea,Dyspnea CoV
 SYMPT-shortness_of_breath_dyspne___2,Sympt,LC+ Dyspnea,Dyspnea LC+
 SYMPT-sore_throat___1,Sympt,CoV Sore Throat,Sore Throat CoV
@@ -93,3 +97,4 @@ SYMPT-loss_of_appetite___2,Sympt,LC+ Loss of Appetite,Loss of Appetite LC+
 SYMPT-abdominal_pain___2,Sympt,LC+ Abdominal Pain,Abdominal Pain LC+
 SYMPT-skin_rash___2,Sympt,LC+ Skin Rash,Skin Rash LC+
 SYMPT-leg_swelling_edema___2,Sympt,LC+ Edema,Edema LC+
+CD-neurologic_complications___1,Cd,CoV Neurologic Complications,Neurologic Complications CoV
