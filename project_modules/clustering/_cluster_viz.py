@@ -27,15 +27,30 @@ def plot_feature_importances(
 #===============================================================================
     
     # second, plot the feature importances in the "bars" window
-    sns.barplot(
-                    y       = feature_set["Feature"], 
-                    x       = feature_set["Importance"],
-                    palette = feature_colour_map,
-                    hue     = feature_set["Feature"],
-                    # orient = "h",
-                    ax = ax,
-                    legend = None,
-                    )
+    try:
+        sns.barplot(
+                        y       = feature_set["Feature"], 
+                        x       = feature_set["Importance"],
+                        palette = feature_colour_map,
+                        hue     = feature_set["Feature"],
+                        # orient = "h",
+                        ax = ax,
+                        legend = None,
+                        )
+
+    except ValueError as e:
+        print(e)
+        
+        sns.barplot(
+                y       = feature_set["Feature"], 
+                x       = feature_set["Importance"],
+                palette = 'viridis',
+                hue     = feature_set["Feature"],
+                # orient = "h",
+                ax = ax,
+                legend = None,
+                ) 
+
 
     # make the x ticks and label larger
     ax.tick_params(axis='both', which='major', labelsize=FONTSIZE)
