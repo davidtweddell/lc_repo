@@ -1,14 +1,10 @@
-import seaborn as sns
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from matplotlib.figure import Figure
-from matplotlib.axes import Axes
 from sklearn.pipeline import Pipeline
 from hdbscan import all_points_membership_vectors
 
 
-from typing import Union, List, Dict, Tuple, Optional, Iterable
+from typing import Dict
 
 # globals
 figsize = (6,6)
@@ -26,14 +22,23 @@ def make_plot_df(p: Pipeline,
 
     # TODO: move this to a function
     points   = p["embed"].embedding_
-    clusters = p["cluster"].labels_
-    probs    = p["cluster"].probabilities_
+    clusters = p["cluster"].labels_ # type: ignore
+    probs    = p["cluster"].probabilities_ # type: ignore
     # sites    = LC_pos_.loc[X.index]["SITE"].map(site_name_dict)
 
-    # # cluster labels are the maximally probable cluster
-    cluster_labels = np.argmax(all_points_membership_vectors(p["cluster"]), 
-                            axis = 1)
+    # try:
+    # # # cluster labels are the maximally probable cluster
+    #     cluster_labels = np.argmax(all_points_membership_vectors(p["cluster"]), axis = 1) # type: ignore
 
+    # # # add two types of errors
+    # except Exception as e:
+    #     print(e)
+    #     cluster_labels = clusters
+
+    # print(cluster_labels)
+
+    # reassing the most likely cluster
+    cluster_labels = np.argmax(all_points_membership_vectors(p["cluster"]), axis = 1) # type: ignore
     clusters = cluster_labels
 
     # plot_df = pd.DataFrame(points, columns = ["x", "y"], index = X.index)
