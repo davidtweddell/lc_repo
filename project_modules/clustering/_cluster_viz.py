@@ -1,12 +1,8 @@
 import seaborn as sns
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib.figure import Figure
 from matplotlib.axes import Axes
-
-
-from typing import Union, List, Dict, Tuple, Optional
+from typing import Union, Optional
 
 # globals
 figsize = (6,6)
@@ -54,7 +50,8 @@ def plot_feature_importances(
 
     # make the x ticks and label larger
     ax.tick_params(axis='both', which='major', labelsize=FONTSIZE)
-    ax.set_xlabel(""); ax.set_ylabel("")
+    ax.set_xlabel("")
+    ax.set_ylabel("")
 
     # no legend
     # ax.get_legend().remove()
@@ -82,14 +79,16 @@ def plot_clusters(
     # plot the embeddings
     # fig, ax = plt.subplots(figsize=(10, 10))
 
-    if ax == None:
+    if ax is None:
         fig, ax = plt.subplots(figsize=(10, 10))
     else:
-        fig = None
+        # fig = None
         ax = ax
         pass
 
+    # should we ensure that ax is not None?
 
+    # which cluster to use
     if most_likely:
         hue = "Most Likely Cluster"
     else:
@@ -115,16 +114,10 @@ def plot_clusters(
                     ax          = ax
                         )
 
-    if centroids is not None:
-        # plot centroids
-        if centroids == True:
-            centroids = _make_centroids(df[["x", "y"]].values, 
-                                        df["Cluster"]) # type: ignore
-            _plot_centroids(centroids, 
-                            ax, 
-                            **centroid_kws)
-        else:
-            pass
+    # plot the centroids
+    if centroids:
+        centroid_df = _make_centroids(df[["x", "y"]].values, df["Cluster"])
+        _plot_centroids(centroid_df, ax, **centroid_kws)
 
     # set title
     if title:
@@ -134,9 +127,11 @@ def plot_clusters(
     plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
 
     # turn off axis labels and ticks
-    if ax == None:
-        plt.xticks([]); plt.yticks([]);
-        plt.xlabel(""); plt.ylabel("");
+    if ax is None:
+        plt.xticks([])
+        plt.yticks([])
+        plt.xlabel("")
+        plt.ylabel("")
 
         # make labels larger
         plt.tick_params(axis='both', which='major', labelsize=16)
@@ -261,8 +256,10 @@ def plot_multiple_features(
                             show_edge = True)
 
         # turn off the ticks on the ax
-        the_ax.set_xticks([]); the_ax.set_yticks([])
-        the_ax.set_xlabel(""); the_ax.set_ylabel("")
+        the_ax.set_xticks([])
+        the_ax.set_yticks([])
+        the_ax.set_xlabel("")
+        the_ax.set_ylabel("")
 
         # if the feature_map[f] contains a slash, split it and use the first part
 
