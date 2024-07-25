@@ -90,7 +90,8 @@ SYMPT-ear_pain___2,Sympt,LC+ Ear Pain,Ear Pain LC+
 SYMPT-nausea_vomiting___2,Sympt,LC+ Nausea/Vomiting,Nausea/Vomiting LC+
 SYMPT-cough___2,Sympt,LC+ Cough,Cough LC+
 HHX-Cardiovascular disease,Hhx,PMHx Cardiovascular Disease,Cardiovasclar Disease PMHx
-HHX-OTHER-hypo,Hhx,PMHx Hypo,Hypo PMHx
+HHX-OTHER-hypo,Hhx,PMHx Hypothyroid,Hypothyroid PMHx
+HHX-OTHER-hyper,Hhx,PMHx Hyperthyroid,Hyperthyroid PMHx
 SYMPT-wheezing_or_stridor___2,Sympt,LC+ Wheezing/Stridor,Wheezing/Stridor LC+
 SYMPT-diarrhea___2,Sympt,LC+ Diarrhea,Diarrhea LC+
 SYMPT-loss_of_appetite___2,Sympt,LC+ Loss of Appetite,Loss of Appetite LC+
@@ -98,3 +99,4 @@ SYMPT-abdominal_pain___2,Sympt,LC+ Abdominal Pain,Abdominal Pain LC+
 SYMPT-skin_rash___2,Sympt,LC+ Skin Rash,Skin Rash LC+
 SYMPT-leg_swelling_edema___2,Sympt,LC+ Edema,Edema LC+
 CD-neurologic_complications___1,Cd,CoV Neurologic Complications,Neurologic Complications CoV
+HHX-Coronary artery disease,Hhx,PMHx CAD,CAD PMHx
