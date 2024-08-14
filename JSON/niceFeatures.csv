@@ -100,3 +100,5 @@ SYMPT-skin_rash___2,Sympt,LC+ Skin Rash,Skin Rash LC+
 SYMPT-leg_swelling_edema___2,Sympt,LC+ Edema,Edema LC+
 CD-neurologic_complications___1,Cd,CoV Neurologic Complications,Neurologic Complications CoV
 HHX-Coronary artery disease,Hhx,PMHx CAD,CAD PMHx
+SYMPT-trouble_speaking_aphasia_d___2,Sympt,LC+ Aphasia,Aphasia LC+
+SYMPT-seizure___2,Sympt,LC+ Seizure,Seizure LC+
