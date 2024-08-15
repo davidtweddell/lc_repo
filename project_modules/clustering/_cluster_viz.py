@@ -31,7 +31,7 @@ def plot_feature_importances(
                         hue     = feature_set["Feature"],
                         # orient = "h",
                         ax = ax,
-                        legend = None,
+                        legend = False,
                         )
 
     except ValueError as e:
@@ -44,7 +44,7 @@ def plot_feature_importances(
                 hue     = feature_set["Feature"],
                 # orient = "h",
                 ax = ax,
-                legend = None,
+                legend = False,
                 ) 
 
 
@@ -181,10 +181,12 @@ def plot_multiple_features(
 
     int_feat = d["Feature"][:max_feature_length]
 
+    n_rows = max_feature_length // 5
+
     if ax is not None:
         pass
     else:
-        fig, ax = plt.subplots(4, 5, 
+        fig, ax = plt.subplots(n_rows, 5, 
                                 figsize=(20, 20), 
                                 sharex = True, 
                                 sharey = True, 
@@ -198,7 +200,6 @@ def plot_multiple_features(
 # plot the features by cluster
     for i, f in enumerate(int_feat):
         the_ax = ax[i]
-
 
         if i == 0: 
             # add an annotation
@@ -217,6 +218,7 @@ def plot_multiple_features(
 
 
         if f == "age":
+            # TODO: fix this for better colours
             plot_df[f] = X[f]
             the_palette = 'magma'
             hue_order = None
