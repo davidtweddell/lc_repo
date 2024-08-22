@@ -121,7 +121,7 @@ def plot_clusters(
 
     # set title
     if title:
-        plt.title(title)
+        plt.title(title, fontsize = FONTSIZE)
 
     # place the legend outside to the right of the plot
     plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
@@ -323,7 +323,7 @@ def _plot_centroids(centroids: pd.DataFrame,
                                     ),
                         fontsize   = fontsize,
                         color      = color,
-                        fontweight = "bold",
+                        # fontweight = "bold",
                         )
 #===============================================================================
 
