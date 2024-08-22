@@ -1,0 +1,291 @@
+\documentclass[border=40pt,tikz]{standalone}
+\usepackage{graphicx}
+
+\usepackage{subcaption}
+
+% to use tikz
+\usepackage{tikz}
+\usetikzlibrary{mindmap, positioning, shapes.geometric, calc}
+\usetikzlibrary{shapes.multipart, shapes.arrows, arrows.meta}
+\usetikzlibrary{shadows, fit, decorations.markings}
+\usetikzlibrary{backgrounds,calc}
+
+% \usepackage{smartdiagram}
+
+% to use custome fonts
+\usepackage[no-math]{fontspec} 
+% \setmainfont[BoldFont = {Roboto Bold}]{Roboto Bold}
+\setmainfont{Aptos}[BoldFont = Aptos-Bold]
+% \setmainfont{Roboto-Regular}[BoldFont = Roboto-Bold]
+\setmonofont{IBMPlexMono-Regular}[BoldFont = IBMPlexMono-Bold]
+
+% to manipulate colors
+\usepackage{xcolor}
+% \usepackage{pgfgantt}
+\usepackage{mycolor}
+
+% to read datafiles
+\usepackage{datatool}
+
+% page geometry
+\usepackage[left=1.50cm, right=1.50cm, top=1.50cm, bottom=2.00cm]{geometry}
+% % headers and footers
+
+
+%--------------------------------
+%--------------------------------
+\begin{document}
+%--------------------------------
+%--------------------------------
+
+% %--------------------------------
+% % define tikz formats
+% %--------------------------------
+% \tikzset{%
+%         customdash/.style={dash pattern=on 2pt off 3pt on 4pt off 4pt},
+%         tbcdash/.style={dash pattern=on 5pt off 5pt on 5pt off 5pt},
+%         font={\fontsize{24pt}{24}\selectfont}
+% }
+
+
+% \input{colourdefs.tex}
+\input{colours-clusters.tex}
+\input{colours-features.tex}
+
+% angular position of labels, etc.
+\def\startpos{90}
+
+% radius of the circle
+\def\circrad{5}
+
+% radius for labels
+\def\lblrad{\circrad + 1.0}
+\def\lblindent{+10}
+\def\lblsze{\small}
+
+% # arc features
+\def\arcgap{2} % degrees to cut into the start and end positions
+\def\arcwidth{0.5mm} % width of the arc line - the middle is set elsewhere
+
+% size of nodes on joining lines
+\def\noderad{.25}
+
+% nodes
+\DTLloaddb{clusternodes}{./nodes-cluster.csv}
+\DTLloaddb{symptomnodes}{./nodes-symptom.csv}
+\DTLloaddb{sitenodes}{./nodes-sites.csv}
+% edges
+\DTLloaddb{theedges}{./edges-cluster-x-symptoms.csv}
+\DTLloaddb{siteclusteredges}{./edges-sites-x-clusters--2.csv}
+\DTLloaddb{sitesymptedges}{./edges-sites-x-symptoms.csv}
+
+% define some useful styles
+\tikzset{
+    dot/.style={draw, circle, fill=black, inner sep=0pt, minimum size=28pt},
+    chord/.style={
+            white, 
+            line width=0.5mm, 
+            double=gray, 
+            double distance=0.5mm, 
+    },
+}
+
+
+% layers
+\pgfdeclarelayer{nodes}
+\pgfdeclarelayer{edges}
+\pgfsetlayers{main,edges,nodes}
+
+% #================================
+% CLUSTERS x SYMPTOMS
+% #================================
+\begin{tikzpicture}[double distance = 3mm, radius = \circrad]
+
+% background rectangles
+\draw[black, fill = black!10] (-8,-8) rectangle (0,8);
+\draw[black, fill = red!10] (0,-8) rectangle (8,8);
+       
+% place text at the top of the box
+\node[anchor=east, text width=5cm, align = right] at (-1,7.5) {\large \textbf{Symptom Clusters}};
+\node[anchor=west, text width=5cm, align = left] at (1,7.5) {\large \textbf{Symptoms}};
+    
+% create the coordinates
+\DTLforeach{clusternodes}{%
+\MID=MID,\NAME=NODENAME}{%
+    \coordinate (\NAME) at (\startpos + \MID:\circrad);
+}
+
+\DTLforeach{symptomnodes}{%
+\MID=MID,\NAME=NODENAME}{%
+    \coordinate (\NAME) at (\startpos + \MID:\circrad);
+}
+
+
+%  draw the edges
+\begin{pgfonlayer}{edges}
+    \DTLforeach{theedges}{%
+\NSTART=NODESTART,\NEND=NODEEND,\WIDTH=WIDTH,\ES=EDGESTRING,\CLR=EDGECOLOUR}{%
+    \draw[chord, double distance =\WIDTH, double=\CLR] \ES;}
+\end{pgfonlayer}{edges}
+
+% draw the nodes
+\begin{pgfonlayer}{nodes}
+
+    \clip (0,0) circle (\circrad+2);
+
+\DTLforeach{symptomnodes}{%
+\START=START,\END=END,\MID=MID,\COLOUR=COLOUR,\LABEL=LABEL,\NAME=NODENAME,\WIDTH=NW}{%
+  % generic
+    % \draw (\startpos + \MID:\circrad) node[dot,text=white]{};
+        \draw[black, line width=\arcwidth, double=\COLOUR] 
+                (\startpos + \START + \arcgap:\circrad) 
+                arc 
+                (\startpos + \START + \arcgap:\startpos + \END - \arcgap:\circrad);
+        \draw(\startpos + \MID:\lblrad) node[rotate=0, align = center, text width = 1.5 cm]   {\lblsze \LABEL};
+}        
+% draw the nodes
+\DTLforeach{clusternodes}{%
+\START=START,\END=END,\MID=MID,\COLOUR=COLOUR,\LABEL=LABEL,\NAME=NODENAME,\WIDTH=NW}{%
+  % generic
+        \draw[black, line width=\arcwidth, double=\COLOUR] 
+                (\startpos + \START + \arcgap:\circrad) 
+                arc 
+                (\startpos + \START + \arcgap:\startpos + \END - \arcgap:\circrad);
+        \draw(\startpos + \MID:\lblrad) node[rotate=0, align = left]   {\lblsze \LABEL};
+        
+        }        
+\end{pgfonlayer}{nodes}
+
+\end{tikzpicture}
+
+%=-------------------------------
+%=-------------------------------
+% CLUSTERS x SITES
+%=-------------------------------
+%=-------------------------------
+\begin{tikzpicture}[double distance = 3mm, radius = \circrad]
+
+    % background rectangles
+    \draw[black, fill = black!10] (-8,-8) rectangle (0,8);
+    \draw[black, fill = blue!10] (0,-8) rectangle (8,8);
+           
+    % place text at the top of the box
+    \node[anchor=east, text width=5cm, align = right] at (-1,7.5) {\large \textbf{Symptom Clusters}};
+    \node[anchor=west, text width=5cm, align = left] at (1,7.5) {\large \textbf{Sites}};
+        
+    %--------------------------------
+    % create the node coordinates
+    %--------------------------------
+    \DTLforeach{clusternodes}{%
+    \MID=MID,\NAME=NODENAME}{%
+    \coordinate (\NAME) at (\startpos + \MID:\circrad);
+    }
+    
+    %--------------------------------
+    % site coordinates - # better way to do this!
+    % use the MIDALT coordinate because it's mirrored
+    %--------------------------------
+    \DTLforeach{sitenodes}{%
+    \MID=MID,\NAME=NODENAME}{%
+    \coordinate (\NAME) at (\startpos + -1*\MID:\circrad);
+    }
+
+    %--------------------------------
+    % draw edges
+    %--------------------------------
+    \DTLforeach{siteclusteredges}{%
+    \WIDTH=WIDTH,\ES=EDGESTRING,\CLR=EDGECOLOUR}{%
+    \draw[chord, double distance = 2*\WIDTH/10, double=\CLR] \ES;}
+    
+    %--------------------------------
+    % nodes - site
+    %--------------------------------
+    \DTLforeach{sitenodes}{%
+    \SITE=SITE,\LBL=LABEL,\START=START,\END=END,\MID=MID}{%
+            \draw[black, line width=\arcwidth, double=gray] 
+                (\startpos + -1*\START - \arcgap:\circrad) 
+                arc 
+                (\startpos + -1*\START - \arcgap:\startpos + -1*\END + \arcgap:\circrad);
+            \draw(\startpos + -1*\MID:\lblrad) node[rotate=0, align = left]   {\lblsze \LBL};
+    }
+    %--------------------------------
+    % nodes - clusters
+    %--------------------------------
+    \DTLforeach{clusternodes}{%
+    \START=START,\END=END,\MID=MID,\COLOUR=COLOUR,\LABEL=LABEL,\NAME=NODENAME,\WIDTH=NW}{%
+            \draw[black, line width=\arcwidth, double=\COLOUR] 
+                    (\startpos + \START + \arcgap:\circrad) 
+                    arc 
+                    (\startpos + \START + \arcgap:\startpos + \END - \arcgap:\circrad);
+            \draw(\startpos + \MID:\lblrad) node[rotate=0, align = left]   {\lblsze \LABEL};
+    }        
+    
+    \end{tikzpicture}
+    
+%================================
+%================================
+% SITES x SYMPTOMS
+%================================
+%================================
+\begin{tikzpicture}[double distance = 3mm, radius = \circrad]
+
+    % background rectangles
+    \draw[black, fill = blue!10] (-8,-8) rectangle (0,8);
+    \draw[black, fill = red!10] (0,-8) rectangle (8,8);
+           
+    % place text at the top of the box
+    \node[anchor=east, text width=5cm, align = right] at (-1,7.5) {\large \textbf{Sites}};
+    \node[anchor=west, text width=5cm, align = left] at (1,7.5) {\large \textbf{Symptoms}};
+    
+    %--------------------------------
+    % create the coordinates
+    %--------------------------------
+    \DTLforeach{sitenodes}{%
+    \MID=MID,\NAME=NODENAME}{%
+    \coordinate (\NAME) at (\startpos + \MID:\circrad);
+    }
+
+    \DTLforeach{symptomnodes}{%
+    \MID=MID,\NAME=NODENAME}{%
+    \coordinate (\NAME) at (\startpos + \MID:\circrad);
+    }
+    
+    %--------------------------------
+    %  draw the edges
+    %--------------------------------
+    \DTLforeach{sitesymptedges}{%
+    \WIDTH=WIDTH,\ES=EDGESTRING,\CLR=EDGECOLOUR}{%
+    \draw[chord, double distance =\WIDTH, double=\CLR] \ES;}
+    
+    
+    %--------------------------------
+    % % draw the nodes
+    %--------------------------------
+    \DTLforeach{sitenodes}{%
+    \SITE=SITE,\LBL=LABEL,\START=START,\END=END,\MID=MID}{%
+
+    \def\rownum{\DTLcurrentindex}
+      \draw[black, line width=\arcwidth, double=gray] 
+      (\startpos + \START + \arcgap:\circrad) 
+      arc 
+      (\startpos + \START + \arcgap:\startpos + \END - \arcgap:\circrad);
+    \draw(\startpos + \MID:\lblrad) node[rotate=0, align = left]   {\lblsze \LBL};
+
+    }
+
+    \DTLforeach{symptomnodes}{%
+    \START=START,\END=END,\MID=MID,\COLOUR=COLOUR,\LABEL=LABEL,\NAME=NODENAME,\WIDTH=NW}{%
+            \draw[black, line width=\arcwidth, double=\COLOUR] 
+                    (\startpos + \START + \arcgap:\circrad) 
+                    arc 
+                    (\startpos + \START + \arcgap:\startpos + \END - \arcgap:\circrad);
+            \draw(\startpos + \MID:\lblrad) node[rotate=0, align = center, text width = 1.5cm]   {\lblsze \LABEL};
+    }        
+    
+    \end{tikzpicture}
+
+%--------------------------------
+%--------------------------------
+\end{document}
+%--------------------------------
+%--------------------------------

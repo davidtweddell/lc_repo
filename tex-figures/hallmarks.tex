@@ -1,0 +1,245 @@
+\documentclass[border=40pt,tikz]{standalone}
+\usepackage{graphicx}
+
+% to use tikz
+\usepackage{tikz}
+\usetikzlibrary{mindmap, positioning, shapes.geometric, calc}
+\usetikzlibrary{shapes.multipart, shapes.arrows, arrows.meta}
+\usetikzlibrary{shadows, fit, decorations.markings}
+\usetikzlibrary{backgrounds}
+
+% \usepackage{smartdiagram}
+
+% to use custome fonts
+\usepackage[no-math]{fontspec} 
+% \setmainfont[BoldFont = {Roboto Bold}]{Roboto Bold}
+\setmainfont{Roboto-Regular}[BoldFont = Roboto-Bold]
+\setmonofont{IBMPlexMono-Regular}[BoldFont = IBMPlexMono-Bold]
+
+% to manipulate colors
+\usepackage{xcolor}
+% \usepackage{pgfgantt}
+\usepackage{mycolor}
+
+% to read datafiles
+\usepackage{datatool}
+
+% page geometry
+\usepackage[left=1.50cm, right=1.50cm, top=1.50cm, bottom=2.00cm]{geometry}
+% % headers and footers
+
+%--------------------------------
+%--------------------------------
+\begin{document}
+%--------------------------------
+%--------------------------------
+
+% %--------------------------------
+% % define tikz formats
+% %--------------------------------
+% \tikzset{%
+%         customdash/.style={dash pattern=on 2pt off 3pt on 4pt off 4pt},
+%         tbcdash/.style={dash pattern=on 5pt off 5pt on 5pt off 5pt},
+%         font={\fontsize{24pt}{24}\selectfont}
+% }
+
+% angular position of labels, etc.
+\def\startpos{90}
+
+% radius of the circle
+\def\circrad{20}
+
+% radius for labels
+\def\lblrad{\circrad + 2.0}
+\def\lblindent{+0}
+\def\lblsze{\small}
+
+% # arc features
+\def\arcgap{2}
+\def\arcwidth{0.5mm}
+
+\DTLloaddb{sitenodes}{./nodes-sites.csv}
+\DTLloaddb{clusternodes}{./nodes-cluster.csv}
+\DTLloaddb{symptomnodes}{./nodes-symptom.csv}
+\DTLloaddb{hallmarknodes}{./nodes-hallmarks.csv}
+
+\DTLloaddb{clustersymptedges}{./edges-cluster-x-symptoms-ternary.csv}
+\DTLloaddb{siteclusteredges}{./edges-sites-x-clusters-ternary.csv}
+% \DTLloaddb{siteclusteredges}{./edges-cluster-x-site.csv}
+\DTLloaddb{edgessitehallmark}{./edges-sites-x-hallmarks-ternary.csv}
+
+
+% size of nodes on joining lines
+\def\noderad{.25}
+    
+% \input{colourdefs.tex}
+\input{colours-clusters.tex}
+\input{colours-features.tex}
+
+
+\begin{tikzpicture}[double distance = 3mm, regular polygon sides = 3]
+    % layers
+    \pgfdeclarelayer{nodes}
+    \pgfdeclarelayer{edges}
+    \pgfsetlayers{main,edges,nodes}
+
+    \tikzset{
+        dot/.style={circle, fill=black, inner sep=0pt, minimum size=14pt},
+        chord/.style={
+                        white, 
+                        line width=1mm,
+                        double=gray,
+                        double distance=1mm, 
+                        cap=round,
+            % decoration={markings, mark=between positions 0 and 1 step .999 with 
+            % {\node[dot]{};},},
+        },
+        nstyle/.style={circle, 
+                        draw,
+                        line width=0.5mm,
+                        minimum size=4pt, 
+                        inner sep=+0pt, 
+                        fill=blue!10, 
+                        text=black, 
+                        % color = white,
+                        text width= 2cm, 
+                        align = center},
+    }
+    
+% draw a grid for reference
+
+% draw a wedge frin 0 to 120 degrees
+% \draw[fill=blue!10] (0:0) -- (60:20) arc (180:20) -- cycle;
+
+% draw a sector of a circle from 60 to 180 degrees
+\draw[black, fill=green!10] (0:0) -- (60:\circrad) arc (60:180:\circrad) -- cycle;
+\draw[black, fill=gray!10] (0:0) -- (-60:\circrad) arc (-60:60:\circrad) -- cycle;
+\draw[black, fill=blue!10] (0:0) -- (180:\circrad) arc (180:300:\circrad) -- cycle;
+
+% \draw[step=1cm,gray,very thin] (-10,-10) grid (10,10);
+
+% draw the corners of an equilateral triangle
+\coordinate (ctr) at (0:0);
+\coordinate (C) at (0:\circrad+0);
+\coordinate (H) at (120:\circrad+0);
+\coordinate (S) at (240:\circrad+0);
+
+% draw the triangle
+\node[nstyle, text width = 4cm,fill = gray!30] at (0:\lblrad) {\Huge Symptom Cluster};
+\node[nstyle, text width = 4cm,fill = blue!30] at (240:\lblrad) {\Huge Site};
+\node[nstyle, text width = 4cm,fill = green!30] at (120:\lblrad) {\Huge Hallmark};
+
+% # TODO
+% add a legend and use short labels?
+
+
+\begin{pgfonlayer}{nodes}
+
+%--------------------------------
+% Clusters
+%--------------------------------
+\path (ctr) -- (C)
+node foreach \i in {1, ..., 6}
+[nstyle, fill=blue!20, pos=\i/7, name = c\i,]{Cluster \i}; 
+
+\DTLforeach{clusternodes}{%
+\LBL=LABEL,\CLR=COLOUR}{%
+
+% get the row number
+    \def\rownum{\DTLcurrentindex}
+    \draw (c\rownum) node[nstyle, fill=\CLR] {\Large \rownum};
+    }
+
+
+
+
+
+%--------------------------------
+% Sites
+%--------------------------------
+\path (ctr) -- (S)
+node foreach \i in {1, ..., 5}
+[nstyle, fill=red!20, pos=\i/6, name = site\i,]{Site \i}; 
+
+\DTLforeach{sitenodes}{%
+\SITE=SITE,\LBL=LABEL}{%
+
+% get the row number
+\def\rownum{\DTLcurrentindex}
+\draw (site\rownum) node[nstyle,fill=gray, text=white, ] {\Large \LBL};
+}
+
+%--------------------------------
+% Hallmarks
+%--------------------------------
+\path (ctr) -- (H)
+    node foreach \i in {1, ..., 13}
+    [nstyle, fill=gray!10, pos=\i/14, name=h\i]{Hallmark \i}; 
+
+\DTLforeach{hallmarknodes}{%
+\LBL=LABEL}{%
+    \def\rownum{\DTLcurrentindex}
+    \draw (h\rownum) node[nstyle,
+    % make text larger
+    ] {\small\LBL};
+    }
+
+\end{pgfonlayer}{nodes}
+
+
+
+%--------------------------------
+%--------------------------------
+% edges
+%--------------------------------
+%--------------------------------
+\begin{pgfonlayer}{edges}
+    % \DTLforeach{clustersymptedges}{%
+    % \WIDTH=WIDTH,\ES=EDGESTRING,\CLR=EDGECOLOUR}{%
+    % \draw[chord, double distance =\WIDTH, double=\CLR] \ES;}
+
+    \DTLforeach{siteclusteredges}{%
+    \WIDTH=WIDTH,\ES=EDGESTRING,\CLR=EDGECOLOUR}{%
+    \draw[chord, double distance =0.2*\WIDTH, double=\CLR] \ES;}
+
+    \DTLforeach{edgessitehallmark}{%
+    \WIDTH=WIDTH,\ES=EDGESTRING,\CLR=EDGECOLOUR}{%
+    \draw[chord, double distance =0.5*\WIDTH, double=\CLR] \ES;}
+\end{pgfonlayer}{edges}
+
+\end{tikzpicture}
+
+% make a legend to the right of the main figure
+
+% \node[anchor=west, text width=5cm] at (25,0) {\Large
+%     \begin{tabular}{ll}
+%         \textbf{Cluster} & \textbf{Colour} \\
+%         \hline
+%         1 & \textcolor{clustercolour1}{\rule{1cm}{1cm}} \\
+%         2 & \textcolor{clustercolour2}{\rule{1cm}{1cm}} \\
+%         3 & \textcolor{clustercolour3}{\rule{1cm}{1cm}} \\
+%         4 & \textcolor{clustercolour4}{\rule{1cm}{1cm}} \\
+%         5 & \textcolor{clustercolour5}{\rule{1cm}{1cm}} \\
+%         6 & \textcolor{clustercolour6}{\rule{1cm}{1cm}} \\
+%     \end{tabular}
+% };
+% \node[anchor=west, text width=5cm] at (25,10) {\large
+%     \begin{tabular}{ll}
+%         \textbf{Symptom} & \textbf{Colour} \\
+%         \hline
+%         \DTLforeach{symptomnodes}{%
+%         \LBL=LABEL,\CLR=COLOUR}{%
+%             \def\rownum{\DTLcurrentindex}
+%             \LBL & \textcolor{\CLR}{\rule{1cm}{1cm}} \\
+%         }
+
+%     \end{tabular}
+% };
+
+
+
+%--------------------------------
+%--------------------------------
+\end{document}
+%--------------------------------
+%--------------------------------
