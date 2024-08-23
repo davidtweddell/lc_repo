@@ -28,7 +28,7 @@
 \usepackage{datatool}
 
 % page geometry
-\usepackage[left=1.50cm, right=1.50cm, top=1.50cm, bottom=2.00cm]{geometry}
+% \usepackage[left=1.50cm, right=1.50cm, top=1.50cm, bottom=2.00cm]{geometry}
 % % headers and footers
 
 
@@ -47,6 +47,7 @@
 %         font={\fontsize{24pt}{24}\selectfont}
 % }
 
+% TODO: move frame labels to top right and top left corner
 
 % \input{colourdefs.tex}
 \input{colours-clusters.tex}
@@ -61,7 +62,11 @@
 % radius for labels
 \def\lblrad{\circrad + 1.0}
 \def\lblindent{+10}
-\def\lblsze{\small}
+\def\lblsze{\large}
+\def\lblsze{\fontsize{12pt}{24}\selectfont}
+\def\ttlsze{\Large}
+
+\def\boxsze{7}
 
 % # arc features
 \def\arcgap{2} % degrees to cut into the start and end positions
@@ -102,12 +107,12 @@
 \begin{tikzpicture}[double distance = 3mm, radius = \circrad]
 
 % background rectangles
-\draw[black, fill = black!10] (-8,-8) rectangle (0,8);
-\draw[black, fill = red!10] (0,-8) rectangle (8,8);
+\draw[black, fill = black!10] (-\boxsze,-\boxsze) rectangle (0,\boxsze);
+\draw[black, fill = red!10] (0,-\boxsze) rectangle (\boxsze,\boxsze);
        
 % place text at the top of the box
-\node[anchor=east, text width=5cm, align = right] at (-1,7.5) {\large \textbf{Symptom Clusters}};
-\node[anchor=west, text width=5cm, align = left] at (1,7.5) {\large \textbf{Symptoms}};
+\node[anchor=west, text width=5cm, align = left] at (-\boxsze,6.5) {\ttlsze \textbf{Symptom Clusters}};
+\node[anchor=east, text width=5cm, align = right] at (\boxsze,6.5) {\ttlsze \textbf{Symptoms}};
     
 % create the coordinates
 \DTLforeach{clusternodes}{%
@@ -130,8 +135,7 @@
 
 % draw the nodes
 \begin{pgfonlayer}{nodes}
-
-    \clip (0,0) circle (\circrad+2);
+    % \clip (0,0) circle (\circrad+2);
 
 \DTLforeach{symptomnodes}{%
 \START=START,\END=END,\MID=MID,\COLOUR=COLOUR,\LABEL=LABEL,\NAME=NODENAME,\WIDTH=NW}{%
@@ -151,7 +155,7 @@
                 (\startpos + \START + \arcgap:\circrad) 
                 arc 
                 (\startpos + \START + \arcgap:\startpos + \END - \arcgap:\circrad);
-        \draw(\startpos + \MID:\lblrad) node[rotate=0, align = left]   {\lblsze \LABEL};
+        \draw(\startpos + \MID:\lblrad) node[rotate=0, align = left, text width = 2cm]   {\lblsze \LABEL};
         
         }        
 \end{pgfonlayer}{nodes}
@@ -166,12 +170,12 @@
 \begin{tikzpicture}[double distance = 3mm, radius = \circrad]
 
     % background rectangles
-    \draw[black, fill = black!10] (-8,-8) rectangle (0,8);
-    \draw[black, fill = blue!10] (0,-8) rectangle (8,8);
+    \draw[black, fill = black!10] (-\boxsze, -\boxsze) rectangle (0,\boxsze);
+    \draw[black, fill = blue!10] (0,-\boxsze) rectangle (\boxsze,\boxsze);
            
     % place text at the top of the box
-    \node[anchor=east, text width=5cm, align = right] at (-1,7.5) {\large \textbf{Symptom Clusters}};
-    \node[anchor=west, text width=5cm, align = left] at (1,7.5) {\large \textbf{Sites}};
+    \node[anchor=west, text width=5cm, align = left] at (-\boxsze,6.5) {\ttlsze \textbf{Symptom Clusters}};
+    \node[anchor=east, text width=5cm, align = right] at (\boxsze,6.5) {\ttlsze \textbf{Sites}};
         
     %--------------------------------
     % create the node coordinates
@@ -206,7 +210,7 @@
                 (\startpos + -1*\START - \arcgap:\circrad) 
                 arc 
                 (\startpos + -1*\START - \arcgap:\startpos + -1*\END + \arcgap:\circrad);
-            \draw(\startpos + -1*\MID:\lblrad) node[rotate=0, align = left]   {\lblsze \LBL};
+            \draw(\startpos + -1*\MID:\lblrad-0.0) node[rotate=0, align = left]   {\lblsze \LBL};
     }
     %--------------------------------
     % nodes - clusters
@@ -217,7 +221,7 @@
                     (\startpos + \START + \arcgap:\circrad) 
                     arc 
                     (\startpos + \START + \arcgap:\startpos + \END - \arcgap:\circrad);
-            \draw(\startpos + \MID:\lblrad) node[rotate=0, align = left]   {\lblsze \LABEL};
+            \draw(\startpos + \MID:\lblrad) node[rotate=0, align = left, text width = 2cm]   {\lblsze \LABEL};
     }        
     
     \end{tikzpicture}
@@ -230,12 +234,12 @@
 \begin{tikzpicture}[double distance = 3mm, radius = \circrad]
 
     % background rectangles
-    \draw[black, fill = blue!10] (-8,-8) rectangle (0,8);
-    \draw[black, fill = red!10] (0,-8) rectangle (8,8);
+    \draw[black, fill = blue!10] (-\boxsze,-\boxsze) rectangle (0,\boxsze);
+    \draw[black, fill = red!10] (0,-\boxsze) rectangle (\boxsze,\boxsze);
            
     % place text at the top of the box
-    \node[anchor=east, text width=5cm, align = right] at (-1,7.5) {\large \textbf{Sites}};
-    \node[anchor=west, text width=5cm, align = left] at (1,7.5) {\large \textbf{Symptoms}};
+    \node[anchor=west, text width=5cm, align = left] at (-\boxsze,6.5) {\ttlsze \textbf{Sites}};
+    \node[anchor=east, text width=5cm, align = right] at (\boxsze,6.5) {\ttlsze \textbf{Symptoms}};
     
     %--------------------------------
     % create the coordinates

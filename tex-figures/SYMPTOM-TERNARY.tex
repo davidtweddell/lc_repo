@@ -26,7 +26,7 @@
 \usepackage{datatool}
 
 % page geometry
-\usepackage[left=1.50cm, right=1.50cm, top=1.50cm, bottom=2.00cm]{geometry}
+% \usepackage[left=1.50cm, right=1.50cm, top=1.50cm, bottom=2.00cm]{geometry}
 % % headers and footers
 
 %--------------------------------
@@ -45,9 +45,6 @@
 % }
 
 
-% colours
-\definecolor{orangeii}{RGB}{240,90, 10}
-\definecolor{darkblue}{rgb}{0.05,0.25,0.65}
 
 
 % angular position of labels, etc.
@@ -57,7 +54,7 @@
 \def\circrad{20}
 
 % radius for labels
-\def\lblrad{\circrad + 2.0}
+\def\lblrad{\circrad + 4.0}
 \def\lblindent{+0}
 \def\lblsze{\small}
 
@@ -83,7 +80,7 @@
 \input{colours-features.tex}
 
 
-\begin{tikzpicture}[double distance = 3mm, regular polygon sides = 3]
+\begin{tikzpicture}[double distance = 3mm, regular polygon sides = 3,x=1cm,y=1cm]
     % layers
     \pgfdeclarelayer{nodes}
     \pgfdeclarelayer{edges}
@@ -93,7 +90,7 @@
         dot/.style={circle, fill=black, inner sep=0pt, minimum size=14pt},
         chord/.style={
                         white, 
-                        line width=1mm,
+                        line width=1.0mm,
                         double=gray,
                         double distance=1mm, 
                         cap=round,
@@ -102,10 +99,35 @@
         },
         nstyle/.style={circle, 
                         draw,
-                        line width=0.5mm,
+                        line width=1.0mm,
+                        minimum size=0pt, 
+                        inner sep=+0pt, 
+                        fill=blue!10, 
+                        text=black, 
+                        % color = white,
+                        text width= 2cm, 
+                        align = center},
+        invisible/.style={circle, 
+                        line width=0.0mm,
+                        minimum size=0pt, 
+                        inner sep=+0pt, 
+                        align = center},
+        n2style/.style={ellipse, 
+                        draw,
+                        line width=1.0mm,
                         minimum size=4pt, 
                         inner sep=+0pt, 
                         fill=blue!10, 
+                        text=black, 
+                        % color = white,
+                        text width= 3cm, 
+                        align = center},
+        axisstyle/.style={rectangle, 
+                        % draw,
+                        line width=0.5mm,
+                        minimum size=4pt, 
+                        inner sep=+10pt, 
+                        % fill=blue!10, 
                         text=black, 
                         % color = white,
                         text width= 2cm, 
@@ -118,9 +140,9 @@
 % \draw[fill=blue!10] (0:0) -- (60:20) arc (180:20) -- cycle;
 
 % draw a sector of a circle from 60 to 180 degrees
-\draw[black, fill=red!10] (0:0) -- (60:\circrad) arc (60:180:\circrad) -- cycle;
-\draw[black, fill=gray!10] (0:0) -- (-60:\circrad) arc (-60:60:\circrad) -- cycle;
-\draw[black, fill=blue!10] (0:0) -- (180:\circrad) arc (180:300:\circrad) -- cycle;
+\draw[black, fill=red!20] (0:0) -- (60:\circrad+1) arc (60:180:\circrad+1) -- cycle;
+\draw[black, fill=gray!20] (0:0) -- (-60:\circrad+1) arc (-60:60:\circrad+1) -- cycle;
+\draw[black, fill=blue!20] (0:0) -- (180:\circrad+1) arc (180:300:\circrad+1) -- cycle;
 
 % \draw[step=1cm,gray,very thin] (-10,-10) grid (10,10);
 
@@ -130,11 +152,13 @@
 \coordinate (F) at (120:\circrad+0);
 \coordinate (S) at (240:\circrad+0);
 
-% draw the triangle
-\node[nstyle, text width = 4cm,fill = gray!30] at (0:\lblrad) {\Huge Symptom Cluster};
-\node[nstyle, text width = 4cm,fill = blue!30] at (240:\lblrad) {\Huge Site};
-\node[nstyle, text width = 4cm,fill = red!30] at (120:\lblrad) {\Huge Symptom};
+% draw the wedges
+\fontsize{48pt}{24}\selectfont
+\node[axisstyle, text width = 8cm,fill = gray!30] at (0:\lblrad+2) {\fontsize{48pt}{24}\selectfont Symptom Cluster};
+\node[axisstyle, text width = 8cm,fill = red!30] at (120:\lblrad) {\fontsize{48pt}{24}\selectfont Symptom};
+\node[axisstyle, text width = 8cm,fill = blue!30] at (240:\lblrad) {\fontsize{48pt}{24}\selectfont Site};
 
+\fontsize{18pt}{18}\selectfont
 % # TODO
 % add a legend and use short labels?
 
@@ -146,14 +170,14 @@
 %--------------------------------
 \path (ctr) -- (C)
 node foreach \i in {1, ..., 6}
-[nstyle, fill=blue!20, pos=\i/7, name = c\i,]{Cluster \i}; 
+[nstyle, fill=blue!20, pos=(\i)/6, name = c\i,]{}; 
 
 \DTLforeach{clusternodes}{%
 \LBL=LABEL,\CLR=COLOUR}{%
 
 % get the row number
     \def\rownum{\DTLcurrentindex}
-    \draw (c\rownum) node[nstyle, fill=\CLR] {\Large \rownum};
+    \draw (c\rownum) node[nstyle, fill=\CLR, text=white, inner sep = +05pt] {\fontsize{48pt}{24}\selectfont  \rownum};
     }
 
 % make a legend to the right of the main figure
@@ -183,6 +207,21 @@ node foreach \i in {1, ..., 6}
 %     \end{tabular}
 % };
 
+% % add a legend for the symptoms to the right of the figure
+% \node[anchor=west, text width=5cm] at (-25,10) {\large
+%     \begin{tabular}{ll}
+%         \textbf{Symptom} & \textbf{Colour} \\
+%         \hline
+%         \DTLforeach{symptomnodes}{%
+%         \LBL=LABEL,\CLR=COLOUR}{%
+%             \def\rownum{\DTLcurrentindex}
+%             \LBL & \textcolor{\CLR}{\rule{1cm}{1cm}} \\
+%         }
+%         \end{tabular}
+% };
+
+% # set font using point size
+% \fontsize{24pt}{24}\selectfont
 
 
 
@@ -191,29 +230,33 @@ node foreach \i in {1, ..., 6}
 %--------------------------------
 \path (ctr) -- (S)
 node foreach \i in {1, ..., 5}
-[nstyle, fill=red!20, pos=\i/6, name = site\i,]{Site \i}; 
+[nstyle, fill=red!20, pos=\i/5, name = site\i,]{}; 
 
 \DTLforeach{sitenodes}{%
 \SITE=SITE,\LBL=LABEL}{%
 
 % get the row number
 \def\rownum{\DTLcurrentindex}
-\draw (site\rownum) node[nstyle,fill=gray, text=white, ] {\Large \LBL};
+\draw (site\rownum) node[nstyle,fill=gray, text=white, inner sep = +10pt] {\fontsize{36pt}{24}\selectfont \LBL};
 }
 
 %--------------------------------
-% Symtpoms
+% Symptoms
 %--------------------------------
 \path (ctr) -- (F)
     node foreach \i in {1, ..., 9}
-    [nstyle, fill=gray!10, pos=\i/10, name=f\i]{Feature \i}; 
+    [invisible, pos=\i/9, name=f\i,]{}; 
 
 \DTLforeach{symptomnodes}{%
 \LBL=LABEL,\CLR=COLOUR,\TCLR=TEXTCOLOUR}{%
     \def\rownum{\DTLcurrentindex}
-    \draw (f\rownum) node[nstyle, fill=\CLR, text=\TCLR,
-    % make text larger
-    ] {\large \LBL};
+    \draw (f\rownum) node[n2style, 
+                                fill=\CLR, 
+                                text=\TCLR,
+                            % make text larger
+                            inner sep = +05pt,
+                            % text width = 3cm,
+                            ] {\fontsize{24pt}{24}\selectfont \LBL};
     }
 
 \end{pgfonlayer}{nodes}
