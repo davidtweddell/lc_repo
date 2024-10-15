@@ -52,12 +52,22 @@ MED-Antivirals,Med,PMHx Anti-Virals,Anti-Virals PMHx
 MED-Cardiovascular-agents,Med,PMHx Cardiovascular,Cardiovascular PMHx
 MED-Respiratory-tract-agents,Med,PMHx Respiratory Tract,Respiratory Tract PMHx
 SUBST-3,Subst,Alcohol Intake,Alcohol Intake
+age,Demo,Age,Age
+sex,Demo,Sex,Sex
+SYMPT-abdominal_pain___1,Sympt,CoV Abdominal Pain,Abdominal Pain CoV
+SYMPT-abdominal_pain___2,Sympt,LC+ Abdominal Pain,Abdominal Pain LC+
 SYMPT-chest_pain___1,Sympt,CoV Chest Pain,Chest Pain CoV
+SYMPT-chest_pain___2,Sympt,LC+ Chest Pain,Chest Pain LC+
+SYMPT-confusion_altered_mental_s___1,Sympt,CoV Confusion,Confusion CoV
 SYMPT-confusion_altered_mental_s___2,Sympt,LC+ Altered Mental Status,Altered Mental Status LC+
 SYMPT-cough___1,Sympt,CoV Cough,Cough CoV
+SYMPT-cough___2,Sympt,LC+ Cough,Cough LC+
 SYMPT-diarrhea___1,Sympt,CoV Diarrhea,Diarrhea CoV
+SYMPT-diarrhea___2,Sympt,LC+ Diarrhea,Diarrhea LC+
 SYMPT-dizziness___1,Sympt,CoV Dizziness,Dizziness CoV
 SYMPT-dizziness___2,Sympt,LC+ Dizziness,Dizziness LC+
+SYMPT-ear_pain___1,Sympt,CoV Ear Pain,Ear Pain CoV
+SYMPT-ear_pain___2,Sympt,LC+ Ear Pain,Ear Pain LC+
 SYMPT-extremity_weakness_or_numb___1,Sympt,CoV Extremity Weakness/Numbness,Extremity Weakness/Numbness CoV
 SYMPT-extremity_weakness_or_numb___2,Sympt,LC+ Extremity Weakness/Numbness,Extremity Weakness/Numbness LC+
 SYMPT-fatigue___1,Sympt,CoV Fatigue,Fatigue CoV
@@ -65,40 +75,42 @@ SYMPT-fatigue___2,Sympt,LC+ Fatigue,Fatigue LC+
 SYMPT-fever_38_0oc___1,Sympt,CoV Fever > 38,Fever > 38 CoV
 SYMPT-fever_38_0oc___2,Sympt,LC+ Fever > 38,Fever > 38 LC+
 SYMPT-headache___1,Sympt,CoV Headache,Headache CoV
+SYMPT-headache___2,Sympt,LC+ Headache,Headache LC+
+SYMPT-hemoptysis_bloody_sputum___1,Sympt,CoV Hemopytsis,Hemopytsis CoV
 SYMPT-joint_pain_arthralgia___1,Sympt,CoV Arthralgia,Arthralgia CoV
 SYMPT-joint_pain_arthralgia___2,Sympt,LC+ Arthralgia,Arthralgia LC+
+SYMPT-leg_swelling_edema___1,Sympt,CoV Edema,Edema CoV
+SYMPT-leg_swelling_edema___2,Sympt,LC+ Edema,Edema LC+
+SYMPT-loss_of_appetite___1,Sympt,CoV Loss of Appetite,Loss of Appetite CoV
+SYMPT-loss_of_appetite___2,Sympt,LC+ Loss of Appetite,Loss of Appetite LC+
 SYMPT-loss_of_taste_lost_of_smel___1,Sympt,CoV Ageusia/Anosmia,Ageusia/Anosmia CoV
 SYMPT-loss_of_taste_lost_of_smel___2,Sympt,LC+ Ageusia/Anosmia,Ageusia/Anosmia LC+
 SYMPT-muscle_aches_myalgia___1,Sympt,CoV Myalgia,Myalgia CoV
 SYMPT-muscle_aches_myalgia___2,Sympt,LC+ Myalgia,Myalgia LC+
 SYMPT-nausea_vomiting___1,Sympt,CoV Nausea Vomiting,Nausea Vomiting CoV
+SYMPT-nausea_vomiting___2,Sympt,LC+ Nausea/Vomiting,Nausea/Vomiting LC+
+SYMPT-night_sweats___1,Sympt,CoV Night Sweats,Night Sweats CoV
 SYMPT-night_sweats___2,Sympt,LC+ Night Sweats,Night Sweats LC+
+SYMPT-red_eye_conjunctivitis___1,Sympt,CoV Conjunctivitis,Conjunctivitis CoV
 SYMPT-runny_nose_rhinorrhea___1,Sympt,CoV Rhinorrhea,Rhinorrhea CoV
 SYMPT-runny_nose_rhinorrhea___2,Sympt,LC+ Rhinorrhea,Rhinorrhea LC+
+SYMPT-seizure___1,Sympt,CoV Seizure,Seizure CoV
+SYMPT-seizure___2,Sympt,LC+ Seizure,Seizure LC+
 SYMPT-shortness_of_breath_dyspne___1,Sympt,CoV Dyspnea,Dyspnea CoV
 SYMPT-shortness_of_breath_dyspne___2,Sympt,LC+ Dyspnea,Dyspnea LC+
+SYMPT-skin_rash___1,Sympt,CoV Skin Rash,Skin Rash CoV
+SYMPT-skin_rash___2,Sympt,LC+ Skin Rash,Skin Rash LC+
 SYMPT-sore_throat___1,Sympt,CoV Sore Throat,Sore Throat CoV
+SYMPT-sore_throat___2,Sympt,LC+ Sore Throat,Sore Throat LC+
+SYMPT-trouble_speaking_aphasia_d___1,Sympt,CoV Aphasia,Aphasia CoV
+SYMPT-trouble_speaking_aphasia_d___2,Sympt,LC+ Aphasia,Aphasia LC+
 SYMPT-weight_loss___1,Sympt,CoV Weight Loss,Weight Loss CoV
 SYMPT-weight_loss___2,Sympt,LC+ Weight Loss,Weight Loss LC+
+SYMPT-wheezing_or_stridor___1,Sympt,CoV Wheezing/Stridor,Wheezing/Stridor CoV
+SYMPT-wheezing_or_stridor___2,Sympt,LC+ Wheezing/Stridor,Wheezing/Stridor LC+
 VAX-vaccinated,Vax,Vaccinated,Vaccinated
-age,Demo,Age,Age
-sex,Demo,Sex,Sex
-SYMPT-headache___2,Sympt,LC+ Headache,Headache LC+
-SYMPT-chest_pain___2,Sympt,LC+ Chest Pain,Chest Pain LC+
-SYMPT-sore_throat___2,Sympt,LC+ Sore Throat,Sore Throat LC+
-SYMPT-ear_pain___2,Sympt,LC+ Ear Pain,Ear Pain LC+
-SYMPT-nausea_vomiting___2,Sympt,LC+ Nausea/Vomiting,Nausea/Vomiting LC+
-SYMPT-cough___2,Sympt,LC+ Cough,Cough LC+
 HHX-Cardiovascular disease,Hhx,PMHx Cardiovascular Disease,Cardiovasclar Disease PMHx
 HHX-OTHER-hypo,Hhx,PMHx Hypothyroid,Hypothyroid PMHx
 HHX-OTHER-hyper,Hhx,PMHx Hyperthyroid,Hyperthyroid PMHx
-SYMPT-wheezing_or_stridor___2,Sympt,LC+ Wheezing/Stridor,Wheezing/Stridor LC+
-SYMPT-diarrhea___2,Sympt,LC+ Diarrhea,Diarrhea LC+
-SYMPT-loss_of_appetite___2,Sympt,LC+ Loss of Appetite,Loss of Appetite LC+
-SYMPT-abdominal_pain___2,Sympt,LC+ Abdominal Pain,Abdominal Pain LC+
-SYMPT-skin_rash___2,Sympt,LC+ Skin Rash,Skin Rash LC+
-SYMPT-leg_swelling_edema___2,Sympt,LC+ Edema,Edema LC+
 CD-neurologic_complications___1,Cd,CoV Neurologic Complications,Neurologic Complications CoV
 HHX-Coronary artery disease,Hhx,PMHx CAD,CAD PMHx
-SYMPT-trouble_speaking_aphasia_d___2,Sympt,LC+ Aphasia,Aphasia LC+
-SYMPT-seizure___2,Sympt,LC+ Seizure,Seizure LC+
