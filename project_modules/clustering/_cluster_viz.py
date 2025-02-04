@@ -178,8 +178,14 @@ def plot_multiple_features(
 
     max_feature_length = min(20, len(d))
 
+    # is Site in the list of features?
+    if "SITE" in d["Feature"].values:
+        print("Site is in the list of features")
+        # drop the Site feature
+        int_feat = d["Feature"][d["Feature"] != "SITE"][:max_feature_length-1]
 
-    int_feat = d["Feature"][:max_feature_length]
+
+    # int_feat = d["Feature"][:max_feature_length]
 
     n_rows = max_feature_length // 5
 
@@ -227,6 +233,12 @@ def plot_multiple_features(
             plot_df[f] = X[f].map({0: "Male", 1:"Female"})
             the_palette = ["#ababab", "#5577aa"]
             hue_order = ["Male", "Female"]
+
+        elif f == "Site":
+            plot_df[f] = X[f].map(site_name_dict)
+            the_palette = None
+            hue_order = None
+
 
         else:
             plot_df[f] = X[f].map(sympt_dict)
