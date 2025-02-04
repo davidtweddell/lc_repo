@@ -60,13 +60,15 @@
 \def\circrad{5}
 
 % radius for labels
-\def\lblrad{\circrad + 1.0}
+\def\lblrad{\circrad + 1.6}
 \def\lblindent{+10}
-\def\lblsze{\large}
-\def\lblsze{\fontsize{12pt}{24}\selectfont}
-\def\ttlsze{\Large}
+% \def\lblsze{\large}
+% \def\lblsze{\fontsize{12pt}{48}\selectfont}
+\def\lblsze{\huge}
+\def\ttlsze{\Huge}
 
-\def\boxsze{7}
+\def\boxsze{8.5}
+\def\bxheight{9.250}
 
 % # arc features
 \def\arcgap{2} % degrees to cut into the start and end positions
@@ -111,8 +113,8 @@
 \draw[black, fill = red!10] (0,-\boxsze) rectangle (\boxsze,\boxsze);
        
 % place text at the top of the box
-\node[anchor=west, text width=5cm, align = left] at (-\boxsze,6.5) {\ttlsze \textbf{Symptom Clusters}};
-\node[anchor=east, text width=5cm, align = right] at (\boxsze,6.5) {\ttlsze \textbf{Symptoms}};
+\node[anchor=west, text width=5cm, align = left] at (-\boxsze,\bxheight) {\ttlsze \textbf{Symptom Clusters}};
+\node[anchor=east, text width=5cm, align = right] at (\boxsze,\bxheight) {\ttlsze \textbf{Symptoms}};
     
 % create the coordinates
 \DTLforeach{clusternodes}{%
@@ -145,7 +147,7 @@
                 (\startpos + \START + \arcgap:\circrad) 
                 arc 
                 (\startpos + \START + \arcgap:\startpos + \END - \arcgap:\circrad);
-        \draw(\startpos + \MID:\lblrad) node[rotate=0, align = center, text width = 1.5 cm]   {\lblsze \LABEL};
+        \draw(\startpos + \MID:\lblrad + 0.35) node[rotate=\startpos + \MID, align = left, text width = 3.0 cm]   {\lblsze \LABEL};
 }        
 % draw the nodes
 \DTLforeach{clusternodes}{%
@@ -155,7 +157,7 @@
                 (\startpos + \START + \arcgap:\circrad) 
                 arc 
                 (\startpos + \START + \arcgap:\startpos + \END - \arcgap:\circrad);
-        \draw(\startpos + \MID:\lblrad) node[rotate=0, align = left, text width = 2cm]   {\lblsze \LABEL};
+        \draw(\startpos + \MID:\lblrad+0.1) node[rotate=\startpos + \MID - 180, align = left, text width = 3.0cm]   {\lblsze \LABEL};
         
         }        
 \end{pgfonlayer}{nodes}
@@ -174,8 +176,8 @@
     \draw[black, fill = blue!10] (0,-\boxsze) rectangle (\boxsze,\boxsze);
            
     % place text at the top of the box
-    \node[anchor=west, text width=5cm, align = left] at (-\boxsze,6.5) {\ttlsze \textbf{Symptom Clusters}};
-    \node[anchor=east, text width=5cm, align = right] at (\boxsze,6.5) {\ttlsze \textbf{Sites}};
+    \node[anchor=west, text width=5cm, align = left] at (-\boxsze,\bxheight) {\ttlsze \textbf{Symptom Clusters}};
+    \node[anchor=east, text width=5cm, align = right] at (\boxsze,\bxheight) {\ttlsze \textbf{Sites}};
         
     %--------------------------------
     % create the node coordinates
@@ -210,7 +212,7 @@
                 (\startpos + -1*\START - \arcgap:\circrad) 
                 arc 
                 (\startpos + -1*\START - \arcgap:\startpos + -1*\END + \arcgap:\circrad);
-            \draw(\startpos + -1*\MID:\lblrad-0.0) node[rotate=0, align = left]   {\lblsze \LBL};
+            \draw(\startpos + -1*\MID:\lblrad-0.25) node[rotate=\startpos - \MID, align = left]   {\lblsze \LBL};
     }
     %--------------------------------
     % nodes - clusters
@@ -221,7 +223,7 @@
                     (\startpos + \START + \arcgap:\circrad) 
                     arc 
                     (\startpos + \START + \arcgap:\startpos + \END - \arcgap:\circrad);
-            \draw(\startpos + \MID:\lblrad) node[rotate=0, align = left, text width = 2cm]   {\lblsze \LABEL};
+            \draw(\startpos + \MID:\lblrad+0.1) node[rotate=\startpos + \MID - 180, align = left, text width = 3cm]   {\lblsze \LABEL};
     }        
     
     \end{tikzpicture}
@@ -238,8 +240,8 @@
     \draw[black, fill = red!10] (0,-\boxsze) rectangle (\boxsze,\boxsze);
            
     % place text at the top of the box
-    \node[anchor=west, text width=5cm, align = left] at (-\boxsze,6.5) {\ttlsze \textbf{Sites}};
-    \node[anchor=east, text width=5cm, align = right] at (\boxsze,6.5) {\ttlsze \textbf{Symptoms}};
+    \node[anchor=west, text width=5cm, align = left] at (-\boxsze,\bxheight) {\ttlsze \textbf{Sites}};
+    \node[anchor=east, text width=5cm, align = right] at (\boxsze,\bxheight) {\ttlsze \textbf{Symptoms}};
     
     %--------------------------------
     % create the coordinates
@@ -273,7 +275,7 @@
       (\startpos + \START + \arcgap:\circrad) 
       arc 
       (\startpos + \START + \arcgap:\startpos + \END - \arcgap:\circrad);
-    \draw(\startpos + \MID:\lblrad) node[rotate=0, align = left]   {\lblsze \LBL};
+    \draw(\startpos + \MID:\lblrad-0.25) node[rotate= \startpos + \MID - 180, align = left]   {\lblsze \LBL};
 
     }
 
@@ -283,7 +285,7 @@
                     (\startpos + \START + \arcgap:\circrad) 
                     arc 
                     (\startpos + \START + \arcgap:\startpos + \END - \arcgap:\circrad);
-            \draw(\startpos + \MID:\lblrad) node[rotate=0, align = center, text width = 1.5cm]   {\lblsze \LABEL};
+            \draw(\startpos + \MID:\lblrad + 0.35) node[rotate=\startpos + \MID, align = left, text width = 3.0cm]   {\lblsze \LABEL};
     }        
     
     \end{tikzpicture}

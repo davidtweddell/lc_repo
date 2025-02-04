@@ -24,6 +24,7 @@
 
 % to read datafiles
 \usepackage{datatool}
+\usepackage{xstring}
 
 % page geometry
 % \usepackage[left=1.50cm, right=1.50cm, top=1.50cm, bottom=2.00cm]{geometry}
@@ -64,7 +65,7 @@
 
 \DTLloaddb{sitenodes}{./nodes-sites.csv}
 \DTLloaddb{clusternodes}{./nodes-cluster.csv}
-\DTLloaddb{symptomnodes}{./nodes-symptom.csv}
+\DTLloaddb{symptomnodes}{./nodes-symptom-copy.csv}
 
 \DTLloaddb{clustersymptedges}{./edges-cluster-x-symptoms-ternary.csv}
 \DTLloaddb{siteclusteredges}{./edges-sites-x-clusters-ternary.csv}
@@ -105,8 +106,9 @@
                         fill=blue!10, 
                         text=black, 
                         % color = white,
-                        text width= 2cm, 
-                        align = center},
+                        text width= 3cm, 
+                        % align = center
+                        },
         invisible/.style={circle, 
                         line width=0.0mm,
                         minimum size=0pt, 
@@ -120,7 +122,7 @@
                         fill=blue!10, 
                         text=black, 
                         % color = white,
-                        text width= 3cm, 
+                        text width= 2cm, 
                         align = center},
         axisstyle/.style={rectangle, 
                         % draw,
@@ -158,7 +160,7 @@
 \node[axisstyle, text width = 8cm,fill = red!30] at (120:\lblrad) {\fontsize{48pt}{24}\selectfont Symptom};
 \node[axisstyle, text width = 8cm,fill = blue!30] at (240:\lblrad) {\fontsize{48pt}{24}\selectfont Site};
 
-\fontsize{18pt}{18}\selectfont
+\fontsize{36pt}{36}\selectfont
 % # TODO
 % add a legend and use short labels?
 
@@ -177,7 +179,8 @@ node foreach \i in {1, ..., 6}
 
 % get the row number
     \def\rownum{\DTLcurrentindex}
-    \draw (c\rownum) node[nstyle, fill=\CLR, text=white, inner sep = +05pt] {\fontsize{48pt}{24}\selectfont  \rownum};
+    \draw (c\rownum) node[nstyle, fill=\CLR, text=white, inner sep = +
+    5pt, align = center] {\fontsize{64pt}{48}\selectfont  \rownum};
     }
 
 % make a legend to the right of the main figure
@@ -237,7 +240,8 @@ node foreach \i in {1, ..., 5}
 
 % get the row number
 \def\rownum{\DTLcurrentindex}
-\draw (site\rownum) node[nstyle,fill=gray, text=white, inner sep = +10pt] {\fontsize{36pt}{24}\selectfont \LBL};
+\draw (site\rownum) node[nstyle,fill=gray, text=white, inner sep = +25pt, align = left] {\fontsize{48pt}{14}\selectfont \LBL};
+% \draw (site\rownum) node[nstyle,fill=gray, text=white, inner sep = +10pt] {\fontsize{36pt}{24}\selectfont \LBL};
 }
 
 %--------------------------------
@@ -249,14 +253,19 @@ node foreach \i in {1, ..., 5}
 
 \DTLforeach{symptomnodes}{%
 \LBL=LABEL,\CLR=COLOUR,\TCLR=TEXTCOLOUR}{%
+
+    % select the first 2 characters of the label
+    % \def\LBL{\StrLeft{\LBL}{2}}
+
     \def\rownum{\DTLcurrentindex}
     \draw (f\rownum) node[n2style, 
                                 fill=\CLR, 
                                 text=\TCLR,
                             % make text larger
-                            inner sep = +10pt,
-                            text width = 3cm,
-                            ] {\fontsize{24pt}{24}\selectfont \LBL};
+                            inner sep = +2pt,
+                            text width = 5.5cm,
+                            % ] {\Huge \LBL};
+                            ] {\fontsize{48pt}{48}\selectfont \LBL};
     }
 
 \end{pgfonlayer}{nodes}
