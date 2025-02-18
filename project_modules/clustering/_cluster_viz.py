@@ -183,6 +183,9 @@ def plot_multiple_features(
         print("Site is in the list of features")
         # drop the Site feature
         int_feat = d["Feature"][d["Feature"] != "SITE"][:max_feature_length-1]
+    else:
+        print("Site is not in the list of features")
+        int_feat = d["Feature"][:max_feature_length]
 
 
     # int_feat = d["Feature"][:max_feature_length]
@@ -203,6 +206,8 @@ def plot_multiple_features(
     centroids = _make_centroids(plot_df[["x", "y"]].values, 
                                 plot_df["Cluster"])
 
+
+    print(int_feat)
 # plot the features by cluster
     for i, f in enumerate(int_feat):
         the_ax = ax[i]
