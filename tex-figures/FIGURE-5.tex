@@ -1,0 +1,61 @@
+\documentclass[border = 1cm]{standalone}
+\usepackage{graphicx, array}
+
+\usepackage{subcaption}
+
+% to use tikz
+\usepackage{tikz}
+\usetikzlibrary{mindmap, positioning, shapes.geometric, calc}
+\usetikzlibrary{shapes.multipart, shapes.arrows, arrows.meta}
+\usetikzlibrary{shadows, fit, decorations.markings}
+\usetikzlibrary{backgrounds,calc}
+
+% \usepackage{smartdiagram}
+
+% to use custome fonts
+\usepackage[no-math]{fontspec} 
+% \setmainfont[BoldFont = {Roboto Bold}]{Roboto Bold}
+\setmainfont{Aptos}[BoldFont = Aptos-Bold]
+% \setmainfont{Roboto-Regular}[BoldFont = Roboto-Bold]
+\setmonofont{IBMPlexMono-Regular}[BoldFont = IBMPlexMono-Bold]
+
+% to manipulate colors
+\usepackage{xcolor}
+% \usepackage{pgfgantt}
+\usepackage{mycolor}
+
+% to read datafiles
+\usepackage{datatool}
+
+% page geometry
+% \usepackage[left=1.50cm, right=1.50cm, top=1.50cm, bottom=2.00cm]{geometry}
+% % headers and footers
+
+
+%--------------------------------
+%--------------------------------
+\begin{document}
+%--------------------------------
+%--------------------------------
+
+% # make an array of four figures
+
+% align at the top of each cell
+
+
+% make a 2x2 table
+\begin{tabular}{m{10cm}m{10cm}}
+    \Huge{A} & \Huge{B} \\
+    \includegraphics[page = 1,  height = 10cm]{./SYMPTOM-CHORD.pdf} & \includegraphics[page = 2, height = 10cm]{./SYMPTOM-CHORD.pdf} \\
+    & \\
+    \Huge{C}& \Huge{D} \\
+    \includegraphics[page = 3, height = 10cm]{./SYMPTOM-CHORD.pdf} & 
+    \includegraphics[page = 1, width = 10cm]{./SYMPTOM-TERNARY.pdf}
+\end{tabular}
+
+
+%--------------------------------
+%--------------------------------
+\end{document}
+%--------------------------------
+%--------------------------------

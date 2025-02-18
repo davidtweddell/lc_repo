@@ -1,4 +1,4 @@
-\documentclass[border=40pt,tikz]{standalone}
+\documentclass[border=0pt,tikz]{standalone}
 \usepackage{graphicx}
 
 \usepackage{subcaption}
@@ -112,9 +112,9 @@
 \draw[black, fill = black!10] (-\boxsze,-\boxsze) rectangle (0,\boxsze);
 \draw[black, fill = red!10] (0,-\boxsze) rectangle (\boxsze,\boxsze);
        
-% place text at the top of the box
-\node[anchor=west, text width=5cm, align = left] at (-\boxsze,\bxheight) {\ttlsze \textbf{Symptom Clusters}};
-\node[anchor=east, text width=5cm, align = right] at (\boxsze,\bxheight) {\ttlsze \textbf{Symptoms}};
+% % place text at the top of the box
+% \node[anchor=west, text width=5cm, align = left] at (-\boxsze,\bxheight) {\ttlsze \textbf{Symptom Clusters}};
+% \node[anchor=east, text width=5cm, align = right] at (\boxsze,\bxheight) {\ttlsze \textbf{Symptoms}};
     
 % create the coordinates
 \DTLforeach{clusternodes}{%
@@ -175,9 +175,9 @@
     \draw[black, fill = black!10] (-\boxsze, -\boxsze) rectangle (0,\boxsze);
     \draw[black, fill = blue!10] (0,-\boxsze) rectangle (\boxsze,\boxsze);
            
-    % place text at the top of the box
-    \node[anchor=west, text width=5cm, align = left] at (-\boxsze,\bxheight) {\ttlsze \textbf{Symptom Clusters}};
-    \node[anchor=east, text width=5cm, align = right] at (\boxsze,\bxheight) {\ttlsze \textbf{Sites}};
+    % % place text at the top of the box
+    % \node[anchor=west, text width=5cm, align = left] at (-\boxsze,\bxheight) {\ttlsze \textbf{Symptom Clusters}};
+    % \node[anchor=east, text width=5cm, align = right] at (\boxsze,\bxheight) {\ttlsze \textbf{Sites}};
         
     %--------------------------------
     % create the node coordinates
@@ -235,13 +235,13 @@
 %================================
 \begin{tikzpicture}[double distance = 3mm, radius = \circrad]
 
-    % background rectangles
+    % % background rectangles
     \draw[black, fill = blue!10] (-\boxsze,-\boxsze) rectangle (0,\boxsze);
     \draw[black, fill = red!10] (0,-\boxsze) rectangle (\boxsze,\boxsze);
            
-    % place text at the top of the box
-    \node[anchor=west, text width=5cm, align = left] at (-\boxsze,\bxheight) {\ttlsze \textbf{Sites}};
-    \node[anchor=east, text width=5cm, align = right] at (\boxsze,\bxheight) {\ttlsze \textbf{Symptoms}};
+    % % place text at the top of the box
+    % \node[anchor=west, text width=5cm, align = left] at (-\boxsze,\bxheight) {\ttlsze \textbf{Sites}};
+    % \node[anchor=east, text width=5cm, align = right] at (\boxsze,\bxheight) {\ttlsze \textbf{Symptoms}};
     
     %--------------------------------
     % create the coordinates

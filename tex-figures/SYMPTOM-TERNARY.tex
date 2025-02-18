@@ -1,4 +1,4 @@
-\documentclass[border=40pt,tikz]{standalone}
+\documentclass[border=0pt,tikz]{standalone}
 \usepackage{graphicx}
 
 % to use tikz
@@ -155,10 +155,10 @@
 \coordinate (S) at (240:\circrad+0);
 
 % draw the wedges
-\fontsize{48pt}{24}\selectfont
-\node[axisstyle, text width = 8cm,fill = gray!30] at (0:\lblrad+2) {\fontsize{48pt}{24}\selectfont Symptom Cluster};
-\node[axisstyle, text width = 8cm,fill = red!30] at (120:\lblrad) {\fontsize{48pt}{24}\selectfont Symptom};
-\node[axisstyle, text width = 8cm,fill = blue!30] at (240:\lblrad) {\fontsize{48pt}{24}\selectfont Site};
+% \fontsize{48pt}{24}\selectfont
+% \node[axisstyle, text width = 8cm,fill = gray!30] at (0:\lblrad+2) {\fontsize{48pt}{24}\selectfont Symptom Cluster};
+% \node[axisstyle, text width = 8cm,fill = red!30] at (120:\lblrad) {\fontsize{48pt}{24}\selectfont Symptom};
+% \node[axisstyle, text width = 8cm,fill = blue!30] at (240:\lblrad) {\fontsize{48pt}{24}\selectfont Site};
 
 \fontsize{36pt}{36}\selectfont
 % # TODO
@@ -290,6 +290,9 @@ node foreach \i in {1, ..., 5}
     \WIDTH=WIDTH,\ES=EDGESTRING,\CLR=EDGECOLOUR}{%
     \draw[chord, double distance =1*\WIDTH, double=\CLR] \ES;}
 \end{pgfonlayer}{edges}
+
+% % enclose the entire figure in a box
+% \draw[black, line width=1.0mm] (180:\circrad+1) arc (180:300:\circrad+1) -- cycle;
 
 \end{tikzpicture}
 
