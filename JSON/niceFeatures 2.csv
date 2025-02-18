@@ -1,0 +1,107 @@
+feature,category,clean,clean_flip
+CD-adjunctive___1,Cd,CoV Vasopressor/Inotrope,Vasopressor/Inotrope CoV
+CD-difficulty_with_concentrat___4,Cd,Concentration Unknown Origin,Concentration Unknown Origin LC+
+CD-hospitalized,Cd,CoV Hospitalized,Hospitalized CoV
+CD-medication_received___1,Cd,CoV Steroids,Steroids CoV
+CD-medication_received___2,Cd,CoV Remdesivir,Remdesivir CoV
+CD-medication_received___3,Cd,CoV Anticoagulant,Anticoagulant CoV
+CD-medication_received___4,Cd,CoV Colchicine,Colchicine CoV
+CD-medication_received___5,Cd,CoV Antibiotics,Antibiotics CoV
+CD-medication_received___6,Cd,CoV Other Meds,Other Meds CoV
+CD-memory_problems___4,Cd,Memory Unknown Origin,Memory Unknown Origin LC+
+CD-required_oxygen,Cd,CoV Oxygen,Oxygen CoV
+CD-respiratory-other-4,Cd,Respiratory Unknown Origin,Respiratory Unknown Origin LC+
+CD-severity_level___0,Cd,CoV UnInfected,UnInfected CoV
+CD-severity_level___1,Cd,CoV Mild,Mild CoV
+CD-severity_level___2,Cd,CoV Moderate,Moderate CoV
+CD-severity_level___3,Cd,CoV Severe,Severe CoV
+CD-spo2,Cd,CoV SpO2,SpO2 CoV
+CD-type_of_care___1,Cd,CoV ICU,ICU CoV
+CD-type_of_care___2,Cd,CoV Non-ICU,Non-ICU CoV
+CD-anxiety___1,Cd,CoV Anxiety,Anxiety CoV
+CD-anxiety___2,Cd,Anxiety,Anxiety LC+
+CD-insomnia___1,Cd,CoV Insomnia,Insomnia CoV
+CD-insomnia___2,Cd,Insomnia,Insomnia LC+
+CD-depression___1,Cd,CoV Depression,Depression CoV
+CD-depression___2,Cd,Depression,Depression LC+
+CD-irritability___1,Cd,CoV Irritability,Irritability CoV
+CD-irritability___2,Cd,Irritability,Irritability LC+
+CD-fatigue___1,Cd,CoV Fatigue,Fatigue CoV
+CD-fatigue___2,Cd,Fatigue,Fatigue LC+
+CD-memory_problems___1,Cd,CoV Memory Problems,Memory Problems CoV
+CD-memory_problems___2,Cd,Memory Problems,Memory Problems LC+
+CD-brain_fog___1,Cd,CoV Brain Fog,Brain Fog CoV
+CD-brain_fog___2,Cd,Brain Fog,Brain Fog LC+
+CD-difficulty_with_concentrat___1,Cd,CoV Concentration,Concentration CoV
+CD-difficulty_with_concentrat___2,Cd,Concentration,Concentration LC+
+CD-mood_change___1,Cd,CoV Mood Change,Mood Change CoV
+CD-mood_change___2,Cd,Mood Change,Mood Change LC+
+CD-hyperglycemia___1,Cd,CoV Hyperglycemia,Hyperglycemia CoV
+CD-hyperglycemia___2,Cd,Hyperglycemia,Hyperglycemia LC+
+CD-neurologic-other-1,Cd,CoV Neurologic Other,Neurologic Other CoV
+HHX-Arterial Hypertension,Hhx,PMHx Hypertension,Arterial Hypertension PMHx
+HHX-Asthma,Hhx,PMHx Asthma,Asthma PMHx
+HHX-Diabetes,Hhx,PMHx Diabetes,Diabetes PMHx
+HHX-HIV or AIDS,Hhx,PMHx HIV-AIDS,HIV-AIDS PMHx
+HHX-OTHER-Sleep-disorder,Hhx,PMHx Sleep Disorder,Sleep Disorder PMHx
+HHX-OTHER-MSK,Hhx,PMHx MSK,MSK PMHx
+HHX-Obesity,Hhx,PMHx Obesity,Obesity PMHx
+HHX-Other,Hhx,PMHx Other,Other PMHx
+HHX-Psychiatric disease,Hhx,PMHx Psychiatric Disease,Psychiatric Disease PMHx
+HHX-Chronic neurological disorder (other than stroke/TIA),Hhx,PMHx Non-TIA Neuro,Non-TIA Neuro PMHx
+MED-Antivirals,Med,PMHx Anti-Virals,Anti-Virals PMHx
+MED-Cardiovascular-agents,Med,PMHx Cardiovascular,Cardiovascular PMHx
+MED-Respiratory-tract-agents,Med,PMHx Respiratory Tract,Respiratory Tract PMHx
+SUBST-3,Subst,Alcohol Intake,Alcohol Intake
+SYMPT-chest_pain___1,Sympt,CoV Chest Pain,Chest Pain CoV
+SYMPT-confusion_altered_mental_s___2,Sympt,Altered Mental Status,Altered Mental Status LC+
+SYMPT-cough___1,Sympt,CoV Cough,Cough CoV
+SYMPT-diarrhea___1,Sympt,CoV Diarrhea,Diarrhea CoV
+SYMPT-dizziness___1,Sympt,CoV Dizziness,Dizziness CoV
+SYMPT-dizziness___2,Sympt,Dizziness,Dizziness LC+
+SYMPT-extremity_weakness_or_numb___1,Sympt,CoV Weakness/Numbness,Extremity Weakness/Numbness CoV
+SYMPT-extremity_weakness_or_numb___2,Sympt,Weakness/Numbness,Extremity Weakness/Numbness LC+
+SYMPT-fatigue___1,Sympt,CoV Fatigue,Fatigue CoV
+SYMPT-fatigue___2,Sympt,Fatigue,Fatigue LC+
+SYMPT-fever_38_0oc___1,Sympt,CoV Fever > 38,Fever > 38 CoV
+SYMPT-fever_38_0oc___2,Sympt,Fever > 38,Fever > 38 LC+
+SYMPT-headache___1,Sympt,CoV Headache,Headache CoV
+SYMPT-joint_pain_arthralgia___1,Sympt,CoV Arthralgia,Arthralgia CoV
+SYMPT-joint_pain_arthralgia___2,Sympt,Arthralgia,Arthralgia LC+
+SYMPT-loss_of_taste_lost_of_smel___1,Sympt,CoV Ageusia/Anosmia,Ageusia/Anosmia CoV
+SYMPT-loss_of_taste_lost_of_smel___2,Sympt,Ageusia/Anosmia,Ageusia/Anosmia LC+
+SYMPT-muscle_aches_myalgia___1,Sympt,CoV Myalgia,Myalgia CoV
+SYMPT-muscle_aches_myalgia___2,Sympt,Myalgia,Myalgia LC+
+SYMPT-nausea_vomiting___1,Sympt,CoV Nausea Vomiting,Nausea Vomiting CoV
+SYMPT-night_sweats___2,Sympt,Night Sweats,Night Sweats LC+
+SYMPT-runny_nose_rhinorrhea___1,Sympt,CoV Rhinorrhea,Rhinorrhea CoV
+SYMPT-runny_nose_rhinorrhea___2,Sympt,Rhinorrhea,Rhinorrhea LC+
+SYMPT-shortness_of_breath_dyspne___1,Sympt,CoV Dyspnea,Dyspnea CoV
+SYMPT-shortness_of_breath_dyspne___2,Sympt,Dyspnea,Dyspnea LC+
+SYMPT-sore_throat___1,Sympt,CoV Sore Throat,Sore Throat CoV
+SYMPT-weight_loss___1,Sympt,CoV Weight Loss,Weight Loss CoV
+SYMPT-weight_loss___2,Sympt,Weight Loss,Weight Loss LC+
+VAX-vaccinated,Vax,Vaccinated,Vaccinated
+age,Demo,Age,Age
+sex,Demo,Sex,Sex
+SYMPT-headache___2,Sympt,Headache,Headache LC+
+SYMPT-chest_pain___2,Sympt,Chest Pain,Chest Pain LC+
+SYMPT-sore_throat___2,Sympt,Sore Throat,Sore Throat LC+
+SYMPT-ear_pain___2,Sympt,Ear Pain,Ear Pain LC+
+SYMPT-nausea_vomiting___2,Sympt,Nausea/Vomiting,Nausea/Vomiting LC+
+SYMPT-cough___2,Sympt,Cough,Cough LC+
+HHX-Cardiovascular disease,Hhx,PMHx Cardiovascular Disease,Cardiovasclar Disease PMHx
+HHX-OTHER-hypo,Hhx,PMHx Hypothyroid,Hypothyroid PMHx
+HHX-OTHER-hyper,Hhx,PMHx Hyperthyroid,Hyperthyroid PMHx
+SYMPT-wheezing_or_stridor___2,Sympt,Wheezing/Stridor,Wheezing/Stridor LC+
+SYMPT-diarrhea___2,Sympt,Diarrhea,Diarrhea LC+
+SYMPT-loss_of_appetite___2,Sympt,Loss of Appetite,Loss of Appetite LC+
+SYMPT-abdominal_pain___2,Sympt,Abdominal Pain,Abdominal Pain LC+
+SYMPT-skin_rash___2,Sympt,Skin Rash,Skin Rash LC+
+SYMPT-leg_swelling_edema___2,Sympt,Edema,Edema LC+
+CD-neurologic_complications___1,Cd,CoV Neurologic Complications,Neurologic Complications CoV
+HHX-Coronary artery disease,Hhx,PMHx CAD,CAD PMHx
+SYMPT-trouble_speaking_aphasia_d___2,Sympt,Aphasia/Dysphasia,Aphasia/Dysphasia LC+
+SYMPT-seizure___2,Sympt,Seizure,Seizure LC+
+SYMPT-hemoptysis_bloody_sputum___2,Sympt,Hemoptysis,Hemoptysis LC+
+SYMPT-red_eye_conjunctivitis___2,Sympt,Conjunctivitis,Conjunctivitis LC+
