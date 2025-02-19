@@ -102,10 +102,10 @@ def plot_clusters(
     sns.scatterplot(data = df, 
                     x           = "x",
                     y           = "y",
-                    s           = 150,
-                    edgecolor   = 'black', 
+                    s           = 350,
+                    # edgecolor   = 'black', 
                     hue         = hue,
-                    linewidth   = 0.5, 
+                    linewidth   = 0.25, 
                     palette     = palette_dict,
                     style       = style,
                     style_order = site_name_dict.values(),
@@ -124,7 +124,10 @@ def plot_clusters(
         plt.title(title, fontsize = FONTSIZE)
 
     # place the legend outside to the right of the plot
-    plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+    # plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+
+    # place the legend inside bottom right
+    plt.legend(loc='lower right')
 
     # turn off axis labels and ticks
     if ax is None:
@@ -154,6 +157,8 @@ def plot_clusters(
     # make the legend larger
     plt.setp(ax.get_legend().get_texts(), fontsize=FONTSIZE-2) # for legend text
     plt.setp(ax.get_legend().get_title(), fontsize=FONTSIZE-2) # for legend title
+
+    return ax
 #===============================================================================
 
 
