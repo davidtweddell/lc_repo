@@ -1,34 +1,44 @@
 # LC OPTIMIZE
 
+This repo contains a collection of notebooks for the LC OPTIMIZE project.
+
 ## NOTES
-- look at `LCOPT-data-dict.xlsx` - it's a copy with mods of the doc that Doug sent
-- I added columns (headers in all caps) with some thoughts about which data rows to use, meanings, etc.
-- Please have a look and LMK what you think
 
-## TODO
+The main activity - clustering via dimensionality reduction - is implemented in the `04-clustering-3.ipynb` notebook.
 
-- [ ] item
-- [ ] item
+Many of the other notebooks are used for data preparation, exploration, and testing various approaches. Two author contributed to the same repo, for different activities.
 
-## Algorithm sketches and ideas
+## Requirements
 
-### phenotype cluster
+See the `env.yaml` file for the list of requirements. 
 
-- unsupervised clustering on train set
+Use `conda` or `mamba` to create the environment. Note that `mamba` is much faster than `conda`.
 
-```python
-reducer = umap.UMAP()
-reducer.fit(X)
-# could save the fitted reducer to a file if we want
-rr = reducer.transform(X)
+Expected installation time should be around 5 minutes, depending on your internet connection and previous installations (if packages are cached, it will be much faster).
 
-hdb = hdbscan.HDBSCAN()
-clusterer = hdb.fit(rr)
-hdb.fit(rr)
+This environment is tested on Python 3.11.
 
-clusters = hdb.labels_
-# could save the fitted clusterer to a file if we want
-```
-- assemble a dataframe, etc., to visualize the transformed coords and the labels
-- given the cluster as a target, use rfc etc., to train a model to predict cluster (features = UMAP reduced dims, or raw feature values) and extract the important features
+No specialized hardware is required. 
 
+## Installation
+
+1. Generate the environment:
+
+   ```bash
+   mamba env create -f env.yaml
+   ```
+
+2. Activate the environment:
+
+   ```bash
+   conda activate lc-optimize
+   ```
+
+
+## Running the notebooks
+Open notebook `04-clustering-3.ipynb` in JupyterLab or Jupyter Notebook. Even better, use VS Code with the Jupyter extension.
+
+Runtime should require only a few minutes. The UMAP dimensionality reduction step is the most time-consuming, but it should not take more than 5 minutes on a standard laptop.
+
+
+## License
